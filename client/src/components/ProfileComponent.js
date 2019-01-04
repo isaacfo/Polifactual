@@ -26,15 +26,15 @@ const Profile = ({ match }) => {
   </div>
   <div className="">
     <ul>
-      <li><Link to={`${match.url}/html`}>HTML</Link></li>
-      <li><Link to={`${match.url}/css`}>CSS</Link></li>
-      <li><Link to={`${match.url}/react`}>React</Link></li>
+      <li><Link to={`${match.url}/Local`}>Local</Link></li>
+      <li><Link to={`${match.url}/State`}>State</Link></li>
+      <li><Link to={`${match.url}/National`}>National</Link></li>
     </ul>
   </div>
   <div className="">
-    <Route path={`${match.path}/html`} render={() => { return <h1>HTML</h1> }}/>
-    <Route path={`${match.path}/css`} render={() => { return <h1>CSS</h1> }}/>
-    <Route path={`${match.path}/react`} render={() => { return <h1>React</h1> }}/>
+    <Route path={`${match.path}/Local`} render={() => { return <h1>Local</h1> }}/>
+    <Route path={`${match.path}/State`} render={() => { return <h1>State</h1> }}/>
+    <Route path={`${match.path}/National`} render={() => { return <h1>National</h1> }}/>
   </div>
 </div>
     );
