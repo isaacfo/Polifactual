@@ -1,6 +1,8 @@
 
 import React from 'react';
 
+import Signup from './Signup';
+
 import {
     BrowserRouter as Router,
     Route,
@@ -17,10 +19,18 @@ import {
 const Home = ({ match }) => {
     return (
 <div>
-   <div className="jumbotron">
-        <h1 className="display-3">Welcome</h1>
-   </div>
-  
+  <div className="">
+      <h1 className="">Welcome! Please click the link below to sign in! </h1>
+  </div>
+  <div className="">
+    <ul>
+      <li><Link to={`${match.url}/Signup`}>Signup/Login</Link></li>
+    </ul>
+  </div>
+  <div className="">
+    <Route path={`${match.path}/Signup`} component={Signup}/>
+
+  </div>
 </div>
     );
 }

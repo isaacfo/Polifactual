@@ -32,9 +32,9 @@ const Profile = ({ match }) => {
     </ul>
   </div>
   <div className="">
-    <Route path={`${match.path}/Local`} render={() => { return <h1>Local</h1> }}/>
-    <Route path={`${match.path}/State`} render={() => { return <h1>State</h1> }}/>
-    <Route path={`${match.path}/National`} render={() => { return <h1>National</h1> }}/>
+    <Route path={`${match.path}/Local`} component={Locals}/>
+    <Route path={`${match.path}/State`} component={States}/>
+    <Route path={`${match.path}/National`} component={Nationals}/>
   </div>
 </div>
     );

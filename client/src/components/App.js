@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 import Home from './HomeComponent';
 import Profile from './ProfileComponent';
-import Signup_Login from './Signup_Login';
 
 
 
@@ -30,9 +29,6 @@ class App extends Component {
                 <a href="/">Home</a>
               </li>
               <li>
-                <a href="/Signup_login">Signup_Login</a>
-              </li>
-              <li>
                 <a href="/Profile">Profile</a>
               </li>
             </ul>
@@ -41,8 +37,7 @@ class App extends Component {
 
            <Switch>
               
-              <Route exact path="/" component={Home} />
-              <Route path="/Signup_Login" component={Signup_Login} />
+              <Route path="/" component={Home} />
               <Route path="/Profile" component={Profile} />
             </Switch> 
           </div>
