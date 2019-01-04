@@ -6,8 +6,10 @@ import Profile from './ProfileComponent';
 
 
 
+
 //import route Components 
 import { BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-router-dom'
+import Signup from './Signup';
 
 
 class App extends Component {
@@ -37,7 +39,8 @@ class App extends Component {
 
            <Switch>
               
-              <Route path="/" component={Home} />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/Signup" component={Signup} />
               <Route path="/Profile" component={Profile} />
             </Switch> 
           </div>

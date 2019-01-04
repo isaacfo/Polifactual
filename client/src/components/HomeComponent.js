@@ -16,7 +16,7 @@ import {
 //stateless function component - arrow function 
 //component render only static content vs stateful/changing content
 
-const Home = ({ match }) => {
+const Home = () => {
     return (
 <div>
   <div className="">
@@ -24,11 +24,11 @@ const Home = ({ match }) => {
   </div>
   <div className="">
     <ul>
-      <li><Link to={`${match.url}/Signup`}>Signup/Login</Link></li>
+      <li><Link to={`/Signup`}>Signup/Login</Link></li>
     </ul>
   </div>
   <div className="">
-    <Route path={`${match.path}/Signup`} component={Signup}/>
+    <Route path={`/Signup`} component={Signup} />
 
   </div>
 </div>
