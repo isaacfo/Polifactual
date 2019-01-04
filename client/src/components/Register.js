@@ -74,7 +74,7 @@ class Register extends Component {
         </div>
 
         <div class="register">
-            <span style="color: #657575">Already have an account?</span>
+            <span>Already have an account?</span>
             <a href="/login"><input type="submit" value="Log In Here"/></a>
            
 
@@ -86,3 +86,5 @@ class Register extends Component {
 };
 
 export default Register;
+
+
