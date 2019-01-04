@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import '../styles/App.css';
+import Login from './Login'
+import Register from './Register'
+import Local from './LocalComponent';
+import State from './StateComponent';
+import National from './NationalComponent';
 import Home from './HomeComponent';
 import Profile from './ProfileComponent';
 
@@ -28,8 +33,9 @@ class App extends Component {
           <div className="container">
             <ul>
               <li>
-                <a href="/">Home</a>
+                <a href="/">Login</a>
               </li>
+              
               <li>
                 <a href="/Profile">Profile</a>
               </li>
@@ -42,6 +48,9 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/Signup" component={Signup} />
               <Route path="/Profile" component={Profile} />
+              <Route exact path="/" component={Login} />
+              <Route path="/Register" component={Register}/>
+                
             </Switch> 
           </div>
 
