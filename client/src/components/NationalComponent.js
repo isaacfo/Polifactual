@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Styles from '../styles/PageComponents.css';
 
 class Nationals extends Component {
   constructor(props) {
@@ -94,7 +95,7 @@ class Nationals extends Component {
     });
 
     return (
-      <div>
+      <div className="Main">
         <p>{officeNames}</p>
       </div>
     );

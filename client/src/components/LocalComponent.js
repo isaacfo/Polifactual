@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Styles from '../styles/PageComponents.css';
 
 class Locals extends Component {
   constructor(props) {
@@ -97,7 +98,7 @@ class Locals extends Component {
     });
 
     return (
-      <div>
+      <div className="Main">
         <p>{officeNames}</p>
       </div>
     );
