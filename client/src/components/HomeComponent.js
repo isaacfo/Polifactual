@@ -3,6 +3,8 @@ import React from 'react';
 
 import Signup from './Signup';
 
+import '../styles/HomeComponent.css';
+
 import {
     BrowserRouter as Router,
     Route,
@@ -18,9 +20,9 @@ import {
 
 const Home = () => {
     return (
-<div>
+<div className="Home">
   <div className="">
-      <h1 className="">Welcome! Please click the link below to sign in! </h1>
+      <h2 className="H2">Welcome! Please click the link below to sign in! </h2>
   </div>
   <div className="">
     <ul>
