@@ -13,6 +13,12 @@ import {
     Redirect
   } from 'react-router-dom';
 
+import {
+  MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask, MDBRow,
+  MDBCol, MDBIcon,
+  MDBBtn, MDBView, MDBContainer, MDBCard, MDBCardBody, MDBInput, MDBFormInline
+  } from "mdbreact";
+
 
 
 //stateless function component - arrow function 
@@ -20,19 +26,26 @@ import {
 
 const Home = () => {
     return (
-<div className="Home">
+<div className="">
+
+
+
+
+
+
+{/* 
   <div className="">
-      <h2 className="H2">Welcome! Please click the link below to sign in! </h2>
+      <h2 className="">Welcome! Please click the link below to sign in! </h2>
   </div>
-  <div className="">
+  <div className="homeLinks">
     <ul>
       <li><Link to={`/Signup`}>Signup/Login</Link></li>
     </ul>
   </div>
-  <div className="">
+  <div className="homeLinks">
     <Route path={`/Signup`} component={Signup} />
 
-  </div>
+  </div> */}
 </div>
     );
 }

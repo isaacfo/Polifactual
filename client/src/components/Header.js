@@ -1,13 +1,15 @@
 import React, { Component } from "react";
+
 import Login from "./Login";
 import Register from "./Register";
-import Local from "./LocalComponent";
-import State from "./StateComponent";
-import National from "./NationalComponent";
+
 import Home from "./HomeComponent";
-import Profile from "./ProfileComponent";
 import Signup from "./Signup";
-import Styles from '../styles/Header.css';
+import Locals from './LocalComponent';
+import States from './StateComponent';
+import Nationals from './NationalComponent';
+
+import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from "mdbreact";
 
 import {
     BrowserRouter as Router,
@@ -18,38 +20,75 @@ import {
 } from "react-router-dom";
   
 
-class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-      }
 
+class NavbarPage extends React.Component {
+    state = {
+      isOpen: false
+    };
+  
+    toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
+  
     render() {
-        return (
-            <Router>
-                <div className="Header">
-                    <h1 className="H1">Polifactual </h1>
-                    <ul>
-                        <li>
-                            <a href="/">Home</a>
-                        </li>
-
-                        <li>
-                            <a href="/Profile">Profile</a>
-                        </li>
-                    </ul>
-
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/Signup" component={Signup} />
-                        <Route path="/Profile" component={Profile} />
-                        <Route exact path="/" component={Login} />
-                        <Route path="/Register" component={Register} />
-                    </Switch>
-                </div>  
-            </Router>
-        );
+      return (
+        <Router>
+            <Navbar color="transparent" dark expand="md">
+                <NavbarBrand>
+                <strong className="white-text">Polifactual</strong>
+                </NavbarBrand>
+                <NavbarToggler
+                onClick={this.toggleCollapse}
+                />
+                <Collapse
+                id="navbarCollapse3"
+                isOpen={this.state.isOpen}
+                navbar
+                >
+                <NavbarNav left>
+                    <NavItem active>
+                    <NavLink to="/">Home</NavLink>
+                    </NavItem>
+                    <NavItem>
+                    <Dropdown>
+                        <DropdownToggle nav caret>
+                        <div className="d-none d-md-inline">Profile</div>
+                        </DropdownToggle>
+                        <DropdownMenu right>
+                        <DropdownItem href="/Local">Local</DropdownItem>
+                        <DropdownItem href="/State">State</DropdownItem>
+                        <DropdownItem href="/National">National</DropdownItem>
+                        
+                        </DropdownMenu>
+                    </Dropdown>
+                    </NavItem>
+                </NavbarNav>
+                <NavbarNav right>
+                    <NavItem>
+                    <FormInline waves>
+                        <div className="md-form my-0">
+                        <input
+                            className="form-control mr-sm-2"
+                            type="text"
+                            placeholder="Search"
+                            aria-label="Search"
+                        />
+                        </div>
+                    </FormInline>
+                    </NavItem>
+                </NavbarNav>
+                </Collapse>
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/Signup" component={Signup} />
+                    <Route exact path="/" component={Login} />
+                    <Route path="/Register" component={Register} />
+                    <Route path="/Local" component={Locals}/>
+                    <Route path= "/State" component={States}/>
+                    <Route path= "/National" component={Nationals}/>
+                </Switch>
+            </Navbar>
+        </Router>
+      );
     }
-}
-
-export default Header;
+  }
+  
+  export default NavbarPage;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../styles/App.css";
-import Header from './Header';
-import Footer from './Footer';
+import NavbarPage from './Header';
+import FooterPage from './Footer';
 
 class App extends Component {
   constructor(props) {
@@ -11,9 +11,10 @@ class App extends Component {
 
   render() {
     return (
-        <div className="App">
-            <Header />
-            <Footer />
+        <div className="App bg">
+            <NavbarPage/>
+            <br />
+            <FooterPage />
         </div>
     );
   }
