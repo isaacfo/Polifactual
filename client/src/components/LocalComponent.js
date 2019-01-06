@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Styles from '../styles/PageComponents.css';
 
 class Locals extends Component {
   constructor(props) {

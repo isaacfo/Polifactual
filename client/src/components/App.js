@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../styles/App.css";
 import NavbarPage from './Header';
 import FooterPage from './Footer';
+import Main from './MainComponent';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class App extends Component {
     return (
         <div className="App bg">
             <NavbarPage/>
-            <br />
+            <Main />
             <FooterPage />
         </div>
     );
