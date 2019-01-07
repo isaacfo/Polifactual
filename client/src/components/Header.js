@@ -58,9 +58,6 @@ class NavbarPage extends React.Component {
                     <NavLink to="/Trello">Trello</NavLink>
                     </NavItem>
                     <NavItem active>
-                    <NavLink to="/About">About Us</NavLink>
-                    </NavItem>
-                    <NavItem active>
                     <NavLink to="/Team">Meet The Team</NavLink>
                     </NavItem>
                     <NavItem>
