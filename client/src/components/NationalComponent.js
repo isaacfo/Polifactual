@@ -1,4 +1,6 @@
+import { Timeline } from "react-twitter-widgets";
 import React, { Component } from "react";
+// import TwitterHandle from "./TwitterHandle";
 
 class Nationals extends Component {
   constructor(props) {
@@ -19,11 +21,12 @@ class Nationals extends Component {
         // console.log(Object.values(results[3]));
         let newResults = Object.values(results);
         let officesArray = newResults[3];
-        console.log(newResults[3]);
-        console.log(newResults[4]);
+        // console.log(newResults[3]);
+        // console.log(newResults[4]);
         let personInfoArray = newResults[4];
         let masterArray = [];
-        console.log(newResults[3][0].divisionId);
+        // console.log(newResults[3][0].divisionId);
+
         officesArray.forEach(office => {
           if (office.divisionId === "ocd-division/country:us") {
             //   console.log(office.name);
@@ -31,12 +34,29 @@ class Nationals extends Component {
             office.officialIndices.forEach(index => {
               // console.log(personInfoArray[index]);
               let personInfo = personInfoArray[index];
+              //   console.log("hi");
+              //   console.log(personInfoArray[index].channels);
+              let TwitterHandle;
+              if (personInfoArray[index].channels) {
+                // console.log("fart machine");
+                personInfo.channels.forEach(index2 => {
+                  if (index2.type === "Twitter") {
+                    // console.log("hey buddy!");
+                    // console.log(index2.id);
+                    let theirTwitterHandle = index2.id;
+                    TwitterHandle = theirTwitterHandle;
+                    return TwitterHandle;
+                  }
+                });
+              }
+              console.log(TwitterHandle);
               let personOfficeInfo = {
                 officeName: office.name,
                 personName: personInfo.name,
                 address: personInfo.address[0],
                 party: personInfo.party,
-                phoneNumber: personInfo.phones[0]
+                phoneNumber: personInfo.phones[0],
+                twitter: TwitterHandle
               };
               masterArray.push(personOfficeInfo);
             });
@@ -58,24 +78,100 @@ class Nationals extends Component {
   }
 
   render() {
+    console.log(this.state.personOfficeInfo);
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
-      if (item.address.line2) {
+      console.log(item.twitter);
+      if (item.address.line2 && item.twitter) {
         return (
-          <ul key={index}>
-            {item.personName}
-            <br />
-            {item.officeName}
-            <br />
-            {item.address.line1} <br />
-            {item.address.line2} <br />
-            {item.address.city}, {item.address.state} {item.address.zip}
-            <br />
-            {item.party}
-            <br />
-            {item.phoneNumber}
-          </ul>
+          <div>
+            <ul>
+              <li key={index}>
+                {item.personName}
+                <br />
+                {item.officeName}
+                <br />
+                {item.address.line1} <br />
+                {item.address.line2} <br />
+                {item.address.city}, {item.address.state} {item.address.zip}
+                <br />
+                {item.party}
+                <br />
+                {item.phoneNumber}
+                <div>
+                  <Timeline
+                    dataSource={{
+                      sourceType: "profile",
+                      screenName: item.twitter
+                    }}
+                    options={{
+                      username: item.twitter,
+                      height: "400",
+                      width: "60%"
+                    }}
+                    onLoad={() => console.log("Timeline is loaded!")}
+                  />
+                </div>
+              </li>
+            </ul>
+          </div>
         );
-      } else {
+      }
+      if (item.address.line2 && item.twitter === undefined) {
+        return (
+          <div>
+            <ul>
+              <li key={index}>
+                {item.personName}
+                <br />
+                {item.officeName}
+                <br />
+                {item.address.line1} <br />
+                {item.address.line2} <br />
+                {item.address.city}, {item.address.state} {item.address.zip}
+                <br />
+                {item.party}
+                <br />
+                {item.phoneNumber}
+              </li>
+            </ul>
+          </div>
+        );
+      }
+      if (!item.address.line2 && item.twitter) {
+        return (
+          <div>
+            <ul>
+              <li key={index}>
+                {item.personName}
+                <br />
+                {item.officeName}
+                <br />
+                {item.address.line1} <br />
+                {item.address.city}, {item.address.state} {item.address.zip}
+                <br />
+                {item.party}
+                <br />
+                {item.phoneNumber}
+                <div>
+                  <Timeline
+                    dataSource={{
+                      sourceType: "profile",
+                      screenName: item.twitter
+                    }}
+                    options={{
+                      username: item.twitter,
+                      height: "400",
+                      width: "60%"
+                    }}
+                    onLoad={() => console.log("Timeline is loaded!")}
+                  />
+                </div>
+              </li>
+            </ul>
+          </div>
+        );
+      }
+      if ((item.twitter = undefined)) {
         return (
           <ul key={index}>
             {item.personName}
@@ -92,10 +188,9 @@ class Nationals extends Component {
         );
       }
     });
-
     return (
       <div>
-        <p>{officeNames}</p>
+        <div>{officeNames}</div>
       </div>
     );
   }

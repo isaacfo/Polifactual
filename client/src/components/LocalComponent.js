@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Timeline } from "react-twitter-widgets";
 
 class Locals extends Component {
   constructor(props) {
@@ -61,24 +62,100 @@ class Locals extends Component {
   }
 
   render() {
+    console.log(this.state.personOfficeInfo);
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
-      if (item.address.line2) {
+      console.log(item.twitter);
+      if (item.address.line2 && item.twitter) {
         return (
-          <ul key={index}>
-            {item.personName}
-            <br />
-            {item.officeName}
-            <br />
-            {item.address.line1} <br />
-            {item.address.line2} <br />
-            {item.address.city}, {item.address.state} {item.address.zip}
-            <br />
-            {item.party}
-            <br />
-            {item.phoneNumber}
-          </ul>
+          <div>
+            <ul>
+              <li key={index}>
+                {item.personName}
+                <br />
+                {item.officeName}
+                <br />
+                {item.address.line1} <br />
+                {item.address.line2} <br />
+                {item.address.city}, {item.address.state} {item.address.zip}
+                <br />
+                {item.party}
+                <br />
+                {item.phoneNumber}
+                <div>
+                  <Timeline
+                    dataSource={{
+                      sourceType: "profile",
+                      screenName: item.twitter
+                    }}
+                    options={{
+                      username: item.twitter,
+                      height: "400",
+                      width: "60%"
+                    }}
+                    onLoad={() => console.log("Timeline is loaded!")}
+                  />
+                </div>
+              </li>
+            </ul>
+          </div>
         );
-      } else {
+      }
+      if (item.address.line2 && item.twitter === undefined) {
+        return (
+          <div>
+            <ul>
+              <li key={index}>
+                {item.personName}
+                <br />
+                {item.officeName}
+                <br />
+                {item.address.line1} <br />
+                {item.address.line2} <br />
+                {item.address.city}, {item.address.state} {item.address.zip}
+                <br />
+                {item.party}
+                <br />
+                {item.phoneNumber}
+              </li>
+            </ul>
+          </div>
+        );
+      }
+      if (!item.address.line2 && item.twitter) {
+        return (
+          <div>
+            <ul>
+              <li key={index}>
+                {item.personName}
+                <br />
+                {item.officeName}
+                <br />
+                {item.address.line1} <br />
+                {item.address.city}, {item.address.state} {item.address.zip}
+                <br />
+                {item.party}
+                <br />
+                {item.phoneNumber}
+                <div>
+                  <Timeline
+                    dataSource={{
+                      sourceType: "profile",
+                      screenName: item.twitter
+                    }}
+                    options={{
+                      username: item.twitter,
+                      height: "400",
+                      width: "60%"
+                    }}
+                    onLoad={() => console.log("Timeline is loaded!")}
+                  />
+                </div>
+              </li>
+            </ul>
+          </div>
+        );
+      }
+      if (item.twitter === undefined) {
         return (
           <ul key={index}>
             {item.personName}
@@ -95,10 +172,9 @@ class Locals extends Component {
         );
       }
     });
-
     return (
       <div>
-        <p>{officeNames}</p>
+        <div>{officeNames}</div>
       </div>
     );
   }
