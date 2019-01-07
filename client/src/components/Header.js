@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Login from "./Login";
 import Register from "./Register";
 
-// import Home from "./HomeComponent";
+import Home from "./HomeComponent";
 import Signup from "./Signup";
 import Locals from './LocalComponent';
 import States from './StateComponent';
@@ -19,7 +19,7 @@ import {
     Switch,
     Redirect
 } from "react-router-dom";
-import Home from "./HomeComponent";
+
   
 
 
