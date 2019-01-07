@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { MDBIcon, MDBContainer, MDBBtn } from 'mdbreact';
+import { Button, Card, CardBody, CardImage, CardTitle, CardText, Col } from 'mdbreact';
 
 class States extends Component {
   constructor(props) {
@@ -64,11 +66,21 @@ class States extends Component {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       if (item.address.line2) {
         return (
+          <Col>
+          <Card style={{ width: "20rem" }}>
+            {/* <CardImage
+            className="img-fluid"
+            src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
+            /> */}
+            <CardBody className="h-100 w-100">
           <ul key={index}>
+          <CardTitle>
             {item.personName}
             <br />
             {item.officeName}
             <br />
+          </CardTitle>
+          <CardText>
             {item.address.line1} <br />
             {item.address.line2} <br />
             {item.address.city}, {item.address.state} {item.address.zip}
@@ -76,22 +88,62 @@ class States extends Component {
             {item.party}
             <br />
             {item.phoneNumber}
+          </CardText>
           </ul>
+              <MDBContainer>
+                <MDBBtn size="lg" tag="a" floating social="fb">
+                  <MDBIcon icon="facebook" />
+                </MDBBtn>
+                <MDBBtn size="lg" tag="a" floating social="tw">
+                  <MDBIcon icon="twitter" />
+                </MDBBtn>
+                <MDBBtn size="lg" tag="a" floating social="email">
+                  <MDBIcon icon="envelope" />
+                </MDBBtn>
+                </MDBContainer>
+            </CardBody>
+          </Card>
+          </Col>
         );
       } else {
         return (
-          <ul key={index}>
-            {item.personName}
-            <br />
-            {item.officeName}
-            <br />
-            {item.address.line1} <br />
-            {item.address.city}, {item.address.state} {item.address.zip}
-            <br />
-            {item.party}
-            <br />
-            {item.phoneNumber}
-          </ul>
+          <Col>
+             <Card style={{ width: "20rem" }}>
+              {/* <CardImage
+               className="img-fluid"
+               src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
+               />  */}
+                <CardBody className="h-100 w-100">
+                  <ul key={index}>
+                <CardTitle>
+                  {item.personName}
+                  <br />
+                  {item.officeName}
+                  <br />
+                </CardTitle>
+                <CardText>
+                  {item.address.line1} <br />
+                  {item.address.city}, {item.address.state} {item.address.zip}
+                  <br />
+                  {item.party}
+                  <br />
+                  {item.phoneNumber}
+                </CardText>
+                  </ul>
+                <MDBContainer>
+                    <MDBBtn size="lg" tag="a" floating social="fb">
+                      <MDBIcon icon="facebook" />
+                    </MDBBtn>
+                    <MDBBtn size="lg" tag="a" floating social="tw">
+                      <MDBIcon icon="twitter" />
+                    </MDBBtn>
+                    <MDBBtn size="lg" tag="a" floating social="email">
+                      <MDBIcon icon="envelope" />
+                    </MDBBtn>
+                </MDBContainer>
+              </CardBody>
+            </Card>   
+          </Col>
         );
       }
     });
@@ -105,3 +157,44 @@ class States extends Component {
 }
 
 export default States;
+
+
+// <Col>
+// <Card style={{ width: "20rem" }}>
+//   {/* <CardImage
+//   className="img-fluid"
+//   src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
+//   /> */}
+//   <CardBody className="h-100 w-100">
+//       <ul key={index}>
+//       <CardTitle>
+//         {item.personName}
+//         <br />
+//         {item.officeName}
+//         <br />
+//         </CardTitle>
+//         <CardText>
+//         {item.address.line1} <br />
+//         {item.address.line2} <br />
+//         {item.address.city}, {item.address.state} {item.address.zip}
+//         <br />
+//         {item.party}
+//         <br />
+//         {item.phoneNumber}
+//         </CardText>
+//       </ul>
+//       <MDBContainer>
+//         <MDBBtn size="lg" tag="a" floating social="fb">
+//           <MDBIcon icon="facebook" />
+//         </MDBBtn>
+//         <MDBBtn size="lg" tag="a" floating social="tw">
+//           <MDBIcon icon="twitter" />
+//         </MDBBtn>
+//         <MDBBtn size="lg" tag="a" floating social="email">
+//           <MDBIcon icon="envelope" />
+//         </MDBBtn>
+//         </MDBContainer>
+//       {/* <Button href="#">Button</Button> */}
+//   </CardBody>
+// </Card>
+// </Col>
