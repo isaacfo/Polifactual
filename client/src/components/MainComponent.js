@@ -26,6 +26,8 @@ class Main extends React.Component {
       <div>
      <MDBView>
         <MDBMask className="d-flex justify-content-center align-items-center gradient">
+
+        {/* First Section */}
           <MDBContainer>
             <MDBRow>
               <div className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
@@ -76,20 +78,180 @@ class Main extends React.Component {
         </MDBMask>
       </MDBView>
 
-      <MDBContainer>
-        <MDBRow className="py-5">
-          <MDBCol md="12" className="text-center">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-              in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+{/* Second Section */}
+<MDBContainer>
+<section className="my-5">
+        <h2 className="h1-responsive font-weight-bold text-center my-5">
+          Why is it so great?
+        </h2>
+        <p className="lead grey-text w-responsive text-center mx-auto mb-5">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+          ad minim veniam.
+        </p>
+
+        <MDBRow>
+          <MDBCol lg="5" className="text-center text-lg-left">
+            <img
+              className="img-fluid"
+              src="https://mdbootstrap.com/img/Photos/Others/screens-section.jpg"
+              alt=""
+            />
+          </MDBCol>
+          <MDBCol lg="7">
+            <MDBRow className="mb-3">
+              <MDBCol size="1">
+                <MDBIcon icon="mail-forward" size="lg" className="indigo-text" />
+              </MDBCol>
+              <MDBCol xl="10" md="11" size="10">
+                <h5 className="font-weight-bold mb-3">Safety</h5>
+                <p className="grey-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                  enim ad minima veniam, quis nostrum exercitationem ullam.
+                  Reprehenderit maiores aperiam assumenda deleniti hic.
+                </p>
+              </MDBCol>
+            </MDBRow>
+            <MDBRow className="mb-3">
+              <MDBCol size="1">
+                <MDBIcon icon="mail-forward" size="lg" className="indigo-text" />
+              </MDBCol>
+              <MDBCol xl="10" md="11" size="10">
+                <h5 className="font-weight-bold mb-3">Technology</h5>
+                <p className="grey-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                  enim ad minima veniam, quis nostrum exercitationem ullam.
+                  Reprehenderit maiores aperiam assumenda deleniti hic.
+                </p>
+              </MDBCol>
+            </MDBRow>
+            <MDBRow className="mb-3">
+              <MDBCol size="1">
+                <MDBIcon icon="mail-forward" size="lg" className="indigo-text" />
+              </MDBCol>
+              <MDBCol xl="10" md="11" size="10">
+                <h5 className="font-weight-bold mb-3">Finance</h5>
+                <p className="grey-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                  enim ad minima veniam, quis nostrum exercitationem ullam.
+                  Reprehenderit maiores aperiam assumenda deleniti hic.
+                </p>
+              </MDBCol>
+            </MDBRow>
           </MDBCol>
         </MDBRow>
+      </section>
+</MDBContainer>
+
+
+{/* Third Section */}
+      <MDBContainer>
+      <section className="my-5">
+        <h2 className="h1-responsive font-weight-bold text-center my-5">
+          Why is it so great?
+        </h2>
+        <p className="lead grey-text w-responsive text-center mx-auto mb-5">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+          ad minim veniam.
+        </p>
+
+        <MDBRow>
+          <MDBCol md="4">
+            <MDBRow className="mb-3">
+              <MDBCol size="2">
+                <MDBIcon
+                  icon="flag-checkered"
+                  size="2x"
+                  className="deep-purple-text"
+                />
+              </MDBCol>
+              <MDBCol size="10">
+                <h5 className="font-weight-bold mb-3">International</h5>
+                <p className="grey-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Reprehenderit maiores nam, aperiam minima assumenda deleniti
+                  hic.
+                </p>
+              </MDBCol>
+            </MDBRow>
+            <MDBRow className="mb-3">
+              <MDBCol size="2">
+                <MDBIcon icon="flask" size="2x" className="deep-purple-text" />
+              </MDBCol>
+              <MDBCol size="10">
+                <h5 className="font-weight-bold mb-3">Experimental</h5>
+                <p className="grey-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Reprehenderit maiores nam, aperiam minima assumenda deleniti
+                  hic.
+                </p>
+              </MDBCol>
+            </MDBRow>
+            <MDBRow className="mb-3">
+              <MDBCol size="2">
+                <MDBIcon icon="glass" size="2x" className="deep-purple-text" />
+              </MDBCol>
+              <MDBCol size="10">
+                <h5 className="font-weight-bold mb-3">Relaxing</h5>
+                <p className="grey-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Reprehenderit maiores nam, aperiam minima assumenda deleniti
+                  hic.
+                </p>
+              </MDBCol>
+            </MDBRow>
+          </MDBCol>
+          <MDBCol md="4" className="text-name">
+            <img
+              className="img-fluid"
+              src="https://mdbootstrap.com/img/Mockups/Transparent/Small/iphone-portfolio1.png"
+              alt=""
+            />
+          </MDBCol>
+          <MDBCol md="4">
+            <MDBRow className="mb-3">
+              <MDBCol size="2">
+                <MDBIcon icon="heart" size="2x" className="deep-purple-text" />
+              </MDBCol>
+              <MDBCol size="10">
+                <h5 className="font-weight-bold mb-3">Beloved</h5>
+                <p className="grey-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Reprehenderit maiores nam, aperiam minima assumenda deleniti
+                  hic.
+                </p>
+              </MDBCol>
+            </MDBRow>
+            <MDBRow className="mb-3">
+              <MDBCol size="2">
+                <MDBIcon icon="flash" size="2x" className="deep-purple-text" />
+              </MDBCol>
+              <MDBCol size="10">
+                <h5 className="font-weight-bold mb-3">Rapid</h5>
+                <p className="grey-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Reprehenderit maiores nam, aperiam minima assumenda deleniti
+                  hic.
+                </p>
+              </MDBCol>
+            </MDBRow>
+            <MDBRow className="mb-3">
+              <MDBCol size="2">
+                <MDBIcon icon="magic" size="2x" className="deep-purple-text" />
+              </MDBCol>
+              <MDBCol size="10">
+                <h5 className="font-weight-bold mb-3">Magical</h5>
+                <p className="grey-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Reprehenderit maiores nam, aperiam minima assumenda deleniti
+                  hic.
+                </p>
+              </MDBCol>
+            </MDBRow>
+          </MDBCol>
+        </MDBRow>
+      </section>
       </MDBContainer>
 
 

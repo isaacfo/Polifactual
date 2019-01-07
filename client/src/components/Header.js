@@ -9,6 +9,8 @@ import Locals from './LocalComponent';
 import States from './StateComponent';
 import Nationals from './NationalComponent';
 import Team from './Team';
+import Trello from './Trello';
+import Github from './Github';
 
 import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from "mdbreact";
 
@@ -96,9 +98,10 @@ class NavbarPage extends React.Component {
                     <Route exact path="/Signup" component={Signup} />
                     <Route exact path="/Login" component={Login} />
                     <Route path="/Register" component={Register} />
-
+                    <Route path= "/Github" component={Github}/>
+                    <Route path= "/Trello" component={Trello}/>
                     <Route path= "/Team" component={Team}/>
-
+                    
                     <Route path="/Local" component={Locals}/>
                     <Route path= "/State" component={States}/>
                     <Route path= "/National" component={Nationals}/>
