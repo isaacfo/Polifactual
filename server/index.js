@@ -183,55 +183,55 @@ app.post('/api/logout', (req, res) => {
 // ================================================================================================
 //                                      RETRIEVE ONE USER'S INFO                     
 // ================================================================================================
-app.get('/api/users/:id([0-9]+)', (req, res) => {
-    User.getById(req.params.id)
-        .catch(err => {
-            res.send({
-                message: `no soup for you`
-            });
-        })
-        .then(theUser => {
-            res.send(theUser);
-        })
-});
+// app.get('/api/users/:id([0-9]+)', (req, res) => {
+//     User.getById(req.params.id)
+//         .catch(err => {
+//             res.send({
+//                 message: `no soup for you`
+//             });
+//         })
+//         .then(theUser => {
+//             res.send(theUser);
+//         })
+// });
 
 // ================================================================================================
 //                          GET THE FORM FOR EDITING ONE USER'S INFO             
 // ================================================================================================
-app.get('/users/:id([0-9]+)/edit', (req, res) => {
-    User.getById(req.params.id)
-        .catch(err => {
-            res.send({
-                message: `no soup for you`
-            });
-        })
-        .then(theUser => {
-            res.send(page(userForm(theUser)));
-        })
-});
+// app.get('/users/:id([0-9]+)/edit', (req, res) => {
+//     User.getById(req.params.id)
+//         .catch(err => {
+//             res.send({
+//                 message: `no soup for you`
+//             });
+//         })
+//         .then(theUser => {
+//             res.send(page(userForm(theUser)));
+//         })
+// });
 
 // ================================================================================================
 //                          PROCESS THE FORM FOR EDITING ONE USER'S INFO       
 // ================================================================================================
-app.post('/users/:id([0-9]+)/edit', (req, res) => {
-    const id = req.params.id;
-    const newName = req.body.name;
-    // Get the user by their id
-    User.getById(id)
-        .then(theUser => {
-            // call that user's updateName method
-            theUser.updateName(newName)
-                .then(didUpdate => {
-                    if (didUpdate) {
-                        // res.send('yeah you did');
-                        // res.redirect(`/users/${id}/edit`);
-                        res.redirect(`/users/`);
-                    } else {
-                        res.send('💩');
-                    }
-                });            
-        });
-});
+// app.post('/users/:id([0-9]+)/edit', (req, res) => {
+//     const id = req.params.id;
+//     const newName = req.body.name;
+//     // Get the user by their id
+//     User.getById(id)
+//         .then(theUser => {
+//             // call that user's updateName method
+//             theUser.updateName(newName)
+//                 .then(didUpdate => {
+//                     if (didUpdate) {
+//                         // res.send('yeah you did');
+//                         // res.redirect(`/users/${id}/edit`);
+//                         res.redirect(`/users/`);
+//                     } else {
+//                         res.send('💩');
+//                     }
+//                 });            
+//         });
+// });
 
 // ================================================================================================
 //                          ALLOWS VIEWING ON LOCAL HOST 3005

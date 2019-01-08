@@ -50,17 +50,17 @@ class User {
 // ========================================================
 
 // Get All
-    static getAll(){
-        return db.any(`select * from users order by id`)
-            .then(userArray => {
-                // transform array of objects into array of User instances ?
-                const instanceArray = userArray.map(userObj => {
-                    const u = new User(userObj.id, userObj.name);
-                    return u;
-                });
-                return instanceArray;
-            })
-    }
+    // static getAll(){
+    //     return db.any(`select * from users order by id`)
+    //         .then(userArray => {
+    //             // transform array of objects into array of User instances ?
+    //             const instanceArray = userArray.map(userObj => {
+    //                 const u = new User(userObj.id, userObj.name);
+    //                 return u;
+    //             });
+    //             return instanceArray;
+    //         })
+    // }
 
 // Get by ID
     static getById(id) {
@@ -80,9 +80,9 @@ class User {
     }
 
 // Get by name 
-    static searchByName(name) {
-        return db.any(`select * from users where name ilike '%$1:raw%'`, [name])
-    }
+    // static searchByName(name) {
+    //     return db.any(`select * from users where name ilike '%$1:raw%'`, [name])
+    // }
 
 // Check to see if password does match 
     passwordDoesMatch(thePassword) {
