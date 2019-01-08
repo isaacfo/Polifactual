@@ -10,13 +10,10 @@ const pgSession = require('connect-pg-simple')(session);
 const db = require('./models/db');
 const uuidv4 = require('uuid/v4');
 
-const Image = require('./models/Image');
-const Album = require('./models/Album');
 const User = require('./models/User');
 // const bcrypt = require('bcrypt');
 const page = require('./views/page');
 const userList = require('./views/userList');
-const albumList = require('./views/albumList');
 const userForm = require('./views/userForm');
 const registrationForm = require('./views/registrationForm');
 const loginForm = require('./views/loginForm');
@@ -197,22 +194,6 @@ app.get('/users/:id([0-9]+)', (req, res) => {
 });
 
 // ================================================================================================
-//                                  RETRIEVE ALL ALBUMS FOR A USER 
-// ================================================================================================
-app.get(`/users/:id(\\d+)/album`, (req, res) => {
-    User.getById(req.params.id)
-        .then(theUser => {
-            console.log(theUser);
-            theUser.getAlbums()
-                .then(allAlbums => {
-                    const albumsUL = albumList(allAlbums);
-                    const thePage = page(albumsUL);
-                    res.send(thePage);
-                })
-        })
-});
-
-// ================================================================================================
 //                          GET THE FORM FOR EDITING ONE USER'S INFO             
 // ================================================================================================
 app.get('/users/:id([0-9]+)/edit', (req, res) => {
@@ -249,81 +230,6 @@ app.post('/users/:id([0-9]+)/edit', (req, res) => {
                 });            
         });
 });
-
-// ================================================================================================
-//                          POST USERS UPLOADED PHOTOS  
-// ================================================================================================
-app.get('/submit-form', (req, res) => {
-    res.send(submitForm());
-})
-
-app.post('/submit-form', (req, res) => {
-    var form = new formidable.IncomingForm();
-    form.parse(req, (err, fields, files) => {
-      if (err) {
-        console.error('Error', err)
-        throw err
-      }
-    //   console.log('Fields', fields)
-    //   console.log('Files', files)
-      const promiseArray = Object.values(files).filter(file => file.size >0)
-        .map(file => {
-        // console.log(file);
-        // console.log(file.size);
-        // if (file.size > 0) {
-            return (
-                new Promise((resolve, reject)=> {
-                    const newname = `/images/${uuidv4()}.png`
-            fs.rename(file.path, __dirname + '/public' + newname, function (err) { 
-                if(err) {
-                    console.log(err);
-                    reject(err);
-                    return;
-                }
-                else {
-                    resolve(Image.add(newname));
-                } 
-            })
-                })
-
-            );
-            
-    
-
-      }); //This is the end of the map 
-      Promise.all(promiseArray)
-        .then(()=>{
-            res.redirect('/photos');
-              
-
-        })
-
-
-    })
-
-})
-
-
-// /PHOTOS ROUTE- CHANGE FROM PHOTOS TO HTML SO THAT YOUR IMAGE INTERPOLATED INTO BEOFRE AND AFTER SLIDERS 
-    
-// ================================================================================================
-//                          VIEWING PHOTOS 
-// ================================================================================================
-app.get('/photos', (req, res) => {
-    Image.getImages()
-        .then(allImages => {
-            console.log(allImages);
-            // console.log(allImages);
-            res.send(page(albumList(allImages)));
-    })
-        .catch(err => {
-            console.log(err);
-        })
-    
-    
-});
-
-
 
 // ================================================================================================
 //                          ALLOWS VIEWING ON LOCAL HOST 3005
