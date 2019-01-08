@@ -70,7 +70,6 @@ class Nationals extends Component {
         this.setState({
           personOfficeInfo: masterArray
         });
-        // console.log(this.state.items[0]);
       });
 
     // fetch(
@@ -83,67 +82,10 @@ class Nationals extends Component {
 
 
   render() {
-    // console.log(this.state.personOfficeInfo);
     
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
-      console.log(item.twitter);
       if (item.address.line2 && item.twitter) {
         return (
-
-          
-      //     <div>
-      //       <ul>
-      //         <li key={index}>
-      //           {item.personName}
-      //           <br />
-      //           {item.officeName}
-      //           <br />
-      //           {item.address.line1} <br />
-      //           {item.address.line2} <br />
-      //           {item.address.city}, {item.address.state} {item.address.zip}
-      //           <br />
-      //           {item.party}
-      //           <br />
-      //           {item.phoneNumber}
-      //           <div>
-      //             <Timeline
-      //               dataSource={{
-      //                 sourceType: "profile",
-      //                 screenName: item.twitter
-      //               }}
-      //               options={{
-      //                 username: item.twitter,
-      //                 height: "400",
-      //                 width: "60%"
-      //               }}
-      //               onLoad={() => console.log("Timeline is loaded!")}
-      //             />
-      //           </div>
-      //         </li>
-      //       </ul>
-      //     </div>
-      //   );
-      // }
-      // if (item.address.line2 && item.twitter === undefined) {
-      //   return (
-      //     <div>
-      //       <ul>
-      //         <li key={index}>
-      //           {item.personName}
-      //           <br />
-      //           {item.officeName}
-      //           <br />
-      //           {item.address.line1} <br />
-      //           {item.address.line2} <br />
-      //           {item.address.city}, {item.address.state} {item.address.zip}
-      //           <br />
-      //           {item.party}
-      //           <br />
-      //           {item.phoneNumber}
-      //         </li>
-      //       </ul>
-      //     </div>
-          
           <Col>
             <Card style={{ width: "20rem" }}>
               {/* <CardImage
@@ -166,59 +108,128 @@ class Nationals extends Component {
                     {item.party}
                     <br />
                     {item.phoneNumber}
+                    <div>
+                      <Timeline
+                        dataSource={{
+                          sourceType: "profile",
+                          screenName: item.twitter
+                        }}
+                        options={{
+                          username: item.twitter,
+                          height: "400",
+                          width: "60%"
+                        }}
+                        onLoad={() => console.log("Timeline is loaded!")}
+                      />
+                    </div>
                     </CardText>
                   </ul>
                   <MDBContainer>
-                    <MDBBtn size="lg" tag="a" floating social="fb">
-                      <MDBIcon icon="facebook" />
-                    </MDBBtn>
-                    <MDBBtn size="lg" tag="a" floating social="tw">
-                      <MDBIcon icon="twitter" />
-                    </MDBBtn>
                     <MDBBtn size="lg" tag="a" floating social="email">
                       <MDBIcon icon="envelope" />
                     </MDBBtn>
-                    </MDBContainer>
+                  </MDBContainer>
                   {/* <Button href="#">Button</Button> */}
               </CardBody>
             </Card>
           </Col>
         );
       }
+
+
+      if (item.address.line2 && item.twitter === undefined) {
+        return (
+          <Col>
+          <Card style={{ width: "20rem" }}>
+            {/* <CardImage
+            className="img-fluid"
+            src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
+            /> */}
+            <CardBody className="h-100 w-100">
+                <ul key={index}>
+                <CardTitle>
+                  {item.personName}
+                  <br />
+                  {item.officeName}
+                  <br />
+                  </CardTitle>
+                  <CardText>
+                  {item.address.line1} <br />
+                  {item.address.line2} <br />
+                  {item.address.city}, {item.address.state} {item.address.zip}
+                  <br />
+                  {item.party}
+                  <br />
+                  {item.phoneNumber}
+                  </CardText>
+                </ul>
+                <MDBContainer>
+                  <MDBBtn size="lg" tag="a" floating social="email">
+                    <MDBIcon icon="envelope" />
+                  </MDBBtn>
+                </MDBContainer>
+            </CardBody>
+          </Card>
+        </Col>
+
+           );
+      } 
+          
+
       if (!item.address.line2 && item.twitter) {
         return (
-          <div>
-            <ul>
-              <li key={index}>
-                {item.personName}
-                <br />
-                {item.officeName}
-                <br />
-                {item.address.line1} <br />
-                {item.address.city}, {item.address.state} {item.address.zip}
-                <br />
-                {item.party}
-                <br />
-                {item.phoneNumber}
-                <div>
-                  <Timeline
-                    dataSource={{
-                      sourceType: "profile",
-                      screenName: item.twitter
-                    }}
-                    options={{
-                      username: item.twitter,
-                      height: "400",
-                      width: "60%"
-                    }}
-                    onLoad={() => console.log("Timeline is loaded!")}
-                  />
-                </div>
-              </li>
-            </ul>
-          </div>
+      
+            <Col>
+            <Card style={{ width: "20rem" }}>
+              {/* <CardImage
+              className="img-fluid"
+              src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
+              /> */}
+              <CardBody className="h-100 w-100">
+                  <ul key={index}>
+                  <CardTitle>
+                    {item.personName}
+                    <br />
+                    {item.officeName}
+                    <br />
+                    </CardTitle>
+                    <CardText>
+                    {item.address.line1} <br />
+                    {item.address.line2} <br />
+                    {item.address.city}, {item.address.state} {item.address.zip}
+                    <br />
+                    {item.party}
+                    <br />
+                    {item.phoneNumber}
+                    <div>
+                      <Timeline
+                        dataSource={{
+                          sourceType: "profile",
+                          screenName: item.twitter
+                        }}
+                        options={{
+                          username: item.twitter,
+                          height: "400",
+                          width: "60%"
+                        }}
+                        onLoad={() => console.log("Timeline is loaded!")}
+                      />
+                    </div>
+                    </CardText>
+                  </ul>
+                  <MDBContainer>
+                    <MDBBtn size="lg" tag="a" floating social="email">
+                      <MDBIcon icon="envelope" />
+                    </MDBBtn>
+                  </MDBContainer>
+              </CardBody>
+            </Card>
+          </Col>
         );
       }
+
+
+
       if ((item.twitter = undefined)) {
         return (
           <Col>
@@ -241,15 +252,20 @@ class Nationals extends Component {
                   <br />
                   {item.phoneNumber}
                 </ul>
-                <Button href="#">Button</Button>
-              
-                
+                <MDBContainer>
+                    <MDBBtn size="lg" tag="a" floating social="email">
+                      <MDBIcon icon="envelope" />
+                    </MDBBtn>
+                </MDBContainer>
               </CardBody>
             </Card>
           </Col>
         );
       }
     });
+
+
+
     return (
       // <div>
       //   <div>{officeNames}</div>

@@ -38,6 +38,16 @@ function registrationForm() {
             </div>
             <input id="password" placeholder="Password" type="password" name="password" autocomplete="off">
         </label>
+
+        <label>
+            <div class="input">
+                <div class="input-addon">
+                <i class="material-icons">home</i>
+            </div>
+            <input id="street" placeholder="Street" type="text" name="street" autocomplete="off">
+            <input id="state" placeholder="State" type="text" name="state" autocomplete="off">
+            <input id="zipcode" placeholder="Zipcode" type="text" name="zipcode" autocomplete="off">
+        </label>
         
         <br>
         <div class="clearfix"></div>
