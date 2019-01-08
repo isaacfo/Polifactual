@@ -12,6 +12,9 @@ class User {
         this.id = id;
         this.name = name;
         this.username = username;
+        this.streetaddress = streetaddress;
+        this.currentstate = currentstate;
+        this.zipcode = zipcode;
         this.pwhash = pwhash;
     }
 
@@ -35,8 +38,11 @@ class User {
         const id = userObj.id;
         const username = userObj.iusernamed;
         const name = userObj.name;
+        const streetaddress = userObj.streetaddress;
+        const currentstate = userObj.currentstate;
+        const zipcode = userObj.zipcode;
         const pwhash = userObj.pwhash;
-        return new User(id, username, name, pwhash);
+        return new User(id, username, name, streetaddress, currentstate, zipcode, pwhash);
     }
 
 // ========================================================
@@ -60,7 +66,7 @@ class User {
     static getById(id) {
         return db.one('select * from users where id = $1', [id])
             .then(result => {
-                const u = new User(result.id, result.name, result.username, result.pwhash);
+                const u = new User(result.id, result.name, result.username, result.streetaddress, result,currentstate, result.zipcode, result.pwhash);
                 return u;
             })
     }
@@ -69,7 +75,7 @@ class User {
     static getByUsername(username) {
         return db.one(` select * from users where username ilike '%$1:raw%'`, [username])
             .then(result => {
-                return new User(result.id, result.name, result.username, result.pwhash);
+                return new User(result.id, result.name, result.username, result.streetaddress, result,currentstate, result.zipcode, result.pwhash);
             })
     }
 
