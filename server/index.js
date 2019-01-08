@@ -17,7 +17,6 @@ const userList = require('./views/userList');
 const userForm = require('./views/userForm');
 const registrationForm = require('./views/registrationForm');
 const loginForm = require('./views/loginForm');
-const submitForm = require('./views/submitForm');
 
 // Free Subscription - LOGO
 const widget2 = require('./views/widget2');
