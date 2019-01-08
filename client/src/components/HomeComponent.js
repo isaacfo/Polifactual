@@ -1,8 +1,6 @@
 
 import React from 'react';
 
-import Signup from './Signup';
-
 import {
     BrowserRouter as Router,
     Route,
@@ -11,28 +9,21 @@ import {
     Redirect
   } from 'react-router-dom';
 
+import {
+  MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask, MDBRow,
+  MDBCol, MDBIcon,
+  MDBBtn, MDBView, MDBContainer, MDBCard, MDBCardBody, MDBInput, MDBFormInline
+  } from "mdbreact";
 
 
-//stateless function component - arrow function 
-//component render only static content vs stateful/changing content
 
-const Home = () => {
+class Home extends React.Component {
+  render() {
     return (
-<div>
-  <div className="">
-      <h1 className="">Welcome! Please click the link below to sign in! </h1>
-  </div>
-  <div className="">
-    <ul>
-      <li><Link to={`/Signup`}>Signup/Login</Link></li>
-    </ul>
-  </div>
-  <div className="">
-    <Route path={`/Signup`} component={Signup} />
-
-  </div>
-</div>
+      <div></div>
     );
+  }
 }
-
 export default Home;
+
+
