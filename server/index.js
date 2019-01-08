@@ -108,6 +108,7 @@ app.post('/register', (req, res) => {
     const newName = req.body.name;
     const newUsername = req.body.username;
     const newPassword = req.body.password;
+    const newzipcode = req.body.zipcode;
     
     // 2. Call User.add
     User.add(newName, newUsername, newPassword)

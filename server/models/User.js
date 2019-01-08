@@ -24,7 +24,7 @@ class User {
         const salt = bcrypt.genSaltSync(saltRounds);
         
         const hash = bcrypt.hashSync(password, salt);
-        return db.one(`insert into users (name, username, pwhash) values($1, $2, $3) returning id`, [name, username, hash])
+        return db.one(`insert into users (name, username, pwhash) values($1, $2, $3, $4) returning id`, [name, username, hash])
             .then(data => {
                 const u = new User(data.id, name, username);
                 return u;
@@ -89,22 +89,22 @@ class User {
 // ========================================================
 
 // Update Name 
-    static updateName(name) {
-        this.name = name;
-        return db.result(`update users set name=$2 where id=$1`, [this.id, name])
-            .then(result => {
-                return result.rowCount === 1;
-            })
-    }
+    // static updateName(name) {
+    //     this.name = name;
+    //     return db.result(`update users set name=$2 where id=$1`, [this.id, name])
+    //         .then(result => {
+    //             return result.rowCount === 1;
+    //         })
+    // }
 
 // ========================================================
 //                          DELETE
 // ========================================================
 
 // Delete by ID
-    static deleteById(id) {
-        return db.result(`delete from users where id = $1`, [id]);
-    }
+//     static deleteById(id) {
+//         return db.result(`delete from users where id = $1`, [id]);
+//     }
 
 }
 module.exports = User;
