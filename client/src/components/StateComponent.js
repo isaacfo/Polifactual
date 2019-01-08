@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { Timeline } from "react-twitter-widgets";
-import { MDBIcon, MDBContainer, MDBBtn } from 'mdbreact';
-import { Button, Card, CardBody, CardImage, CardTitle, CardText, Col } from 'mdbreact';
+import { MDBIcon, MDBContainer, MDBBtn } from "mdbreact";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardImage,
+  CardTitle,
+  CardText,
+  Col
+} from "mdbreact";
 
 class States extends Component {
   constructor(props) {
@@ -26,11 +34,11 @@ class States extends Component {
         console.log(newResults[4]);
         let personInfoArray = newResults[4];
         let masterArray = [];
-        console.log(newResults[3][0].divisionId);
+        console.log(newResults[3][3].divisionId);
         officesArray.forEach(office => {
           if (
-            office.divisionId === "ocd-division/country:us/state:ga" ||
-            office.divisionId === "ocd-division/country:us/state:ga/cd:5"
+            office.divisionId === newResults[3][3].divisionId ||
+            office.divisionId === newResults[3][2].divisionId
           ) {
             //   console.log(office.name);
             //   console.log(office.officialIndices);
@@ -50,7 +58,7 @@ class States extends Component {
                   }
                 });
               }
-              console.log(TwitterHandle);
+              // console.log(TwitterHandle);
               let personOfficeInfo = {
                 officeName: office.name,
                 personName: personInfo.name,
@@ -81,178 +89,174 @@ class States extends Component {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       if (item.address.line2 && item.twitter) {
         return (
-      
           <Col>
-          <Card style={{ width: "20rem" }}>
-            {/* <CardImage
+            <Card style={{ width: "20rem" }}>
+              {/* <CardImage
             className="img-fluid"
             src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
             /> */}
-            <CardBody className="h-100 w-100">
-          <ul key={index}>
-          <CardTitle>
-            {item.personName}
-            <br />
-            {item.officeName}
-            <br />
-          </CardTitle>
-          <CardText>
-            {item.address.line1} <br />
-            {item.address.line2} <br />
-            {item.address.city}, {item.address.state} {item.address.zip}
-            <br />
-            {item.party}
-            <br />
-            {item.phoneNumber}
-             <div>
-              <Timeline
-              dataSource={{
-                sourceType: "profile",
-                screenName: item.twitter
-              }}
-              options={{
-                username: item.twitter,
-                height: "400",
-                width: "60%"
-              }}
-              onLoad={() => console.log("Timeline is loaded!")}
-              />
-           </div> 
-          </CardText>
-          </ul>
-              <MDBContainer>
-                <MDBBtn size="lg" tag="a" floating social="email">
-                  <MDBIcon icon="envelope" />
-                </MDBBtn>
-              </MDBContainer>
-            </CardBody>
-          </Card>
+              <CardBody className="h-100 w-100">
+                <ul key={index}>
+                  <CardTitle>
+                    {item.personName}
+                    <br />
+                    {item.officeName}
+                    <br />
+                  </CardTitle>
+                  <CardText>
+                    {item.address.line1} <br />
+                    {item.address.line2} <br />
+                    {item.address.city}, {item.address.state} {item.address.zip}
+                    <br />
+                    {item.party}
+                    <br />
+                    {item.phoneNumber}
+                    <div>
+                      <Timeline
+                        dataSource={{
+                          sourceType: "profile",
+                          screenName: item.twitter
+                        }}
+                        options={{
+                          username: item.twitter,
+                          height: "400",
+                          width: "60%"
+                        }}
+                        onLoad={() => console.log("Timeline is loaded!")}
+                      />
+                    </div>
+                  </CardText>
+                </ul>
+                <MDBContainer>
+                  <MDBBtn size="lg" tag="a" floating social="email">
+                    <MDBIcon icon="envelope" />
+                  </MDBBtn>
+                </MDBContainer>
+              </CardBody>
+            </Card>
           </Col>
         );
       }
-      
+
       if (item.address.line2 && item.twitter === undefined) {
         return (
           <Col>
-          <Card style={{ width: "20rem" }}>
-            {/* <CardImage
+            <Card style={{ width: "20rem" }}>
+              {/* <CardImage
             className="img-fluid"
             src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
             /> */}
-            <CardBody className="h-100 w-100">
-          <ul key={index}>
-          <CardTitle>
-            {item.personName}
-            <br />
-            {item.officeName}
-            <br />
-          </CardTitle>
-          <CardText>
-            {item.address.line1} <br />
-            {item.address.line2} <br />
-            {item.address.city}, {item.address.state} {item.address.zip}
-            <br />
-            {item.party}
-            <br />
-            {item.phoneNumber}
-          </CardText>
-          </ul>
-              <MDBContainer>
-                <MDBBtn size="lg" tag="a" floating social="email">
-                  <MDBIcon icon="envelope" />
-                </MDBBtn>
-              </MDBContainer>
-            </CardBody>
-          </Card>
+              <CardBody className="h-100 w-100">
+                <ul key={index}>
+                  <CardTitle>
+                    {item.personName}
+                    <br />
+                    {item.officeName}
+                    <br />
+                  </CardTitle>
+                  <CardText>
+                    {item.address.line1} <br />
+                    {item.address.line2} <br />
+                    {item.address.city}, {item.address.state} {item.address.zip}
+                    <br />
+                    {item.party}
+                    <br />
+                    {item.phoneNumber}
+                  </CardText>
+                </ul>
+                <MDBContainer>
+                  <MDBBtn size="lg" tag="a" floating social="email">
+                    <MDBIcon icon="envelope" />
+                  </MDBBtn>
+                </MDBContainer>
+              </CardBody>
+            </Card>
           </Col>
         );
-          }
+      }
       if (!item.address.line2 && item.twitter) {
         return (
-      
           <Col>
-          <Card style={{ width: "20rem" }}>
-            {/* <CardImage
+            <Card style={{ width: "20rem" }}>
+              {/* <CardImage
             className="img-fluid"
             src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
             /> */}
-            <CardBody className="h-100 w-100">
-          <ul key={index}>
-          <CardTitle>
-            {item.personName}
-            <br />
-            {item.officeName}
-            <br />
-          </CardTitle>
-          <CardText>
-            {item.address.line1} <br />
-            {item.address.line2} <br />
-            {item.address.city}, {item.address.state} {item.address.zip}
-            <br />
-            {item.party}
-            <br />
-            {item.phoneNumber}
-            <div>
-              <Timeline
-              dataSource={{
-                sourceType: "profile",
-                screenName: item.twitter
-              }}
-              options={{
-                username: item.twitter,
-                height: "400",
-                width: "60%"
-              }}
-              onLoad={() => console.log("Timeline is loaded!")}
-              />
-           </div>
-          </CardText>
-          </ul>
-              <MDBContainer>
-                <MDBBtn size="lg" tag="a" floating social="email">
-                  <MDBIcon icon="envelope" />
-                </MDBBtn>
-              </MDBContainer>
-            </CardBody>
-          </Card>
+              <CardBody className="h-100 w-100">
+                <ul key={index}>
+                  <CardTitle>
+                    {item.personName}
+                    <br />
+                    {item.officeName}
+                    <br />
+                  </CardTitle>
+                  <CardText>
+                    {item.address.line1} <br />
+                    {item.address.line2} <br />
+                    {item.address.city}, {item.address.state} {item.address.zip}
+                    <br />
+                    {item.party}
+                    <br />
+                    {item.phoneNumber}
+                    <div>
+                      <Timeline
+                        dataSource={{
+                          sourceType: "profile",
+                          screenName: item.twitter
+                        }}
+                        options={{
+                          username: item.twitter,
+                          height: "400",
+                          width: "60%"
+                        }}
+                        onLoad={() => console.log("Timeline is loaded!")}
+                      />
+                    </div>
+                  </CardText>
+                </ul>
+                <MDBContainer>
+                  <MDBBtn size="lg" tag="a" floating social="email">
+                    <MDBIcon icon="envelope" />
+                  </MDBBtn>
+                </MDBContainer>
+              </CardBody>
+            </Card>
           </Col>
         );
-          }
-
-
+      }
 
       if (!item.address.line2 && item.twitter === undefined) {
         return (
           <Col>
-             <Card style={{ width: "20rem" }}>
+            <Card style={{ width: "20rem" }}>
               {/* <CardImage
                className="img-fluid"
                src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
                />  */}
-                <CardBody className="h-100 w-100">
-                  <ul key={index}>
-                <CardTitle>
-                  {item.personName}
-                  <br />
-                  {item.officeName}
-                  <br />
-                </CardTitle>
-                <CardText>
-                  {item.address.line1} <br />
-                  {item.address.city}, {item.address.state} {item.address.zip}
-                  <br />
-                  {item.party}
-                  <br />
-                  {item.phoneNumber}
-                </CardText>
-                  </ul>
+              <CardBody className="h-100 w-100">
+                <ul key={index}>
+                  <CardTitle>
+                    {item.personName}
+                    <br />
+                    {item.officeName}
+                    <br />
+                  </CardTitle>
+                  <CardText>
+                    {item.address.line1} <br />
+                    {item.address.city}, {item.address.state} {item.address.zip}
+                    <br />
+                    {item.party}
+                    <br />
+                    {item.phoneNumber}
+                  </CardText>
+                </ul>
                 <MDBContainer>
-                    <MDBBtn size="lg" tag="a" floating social="email">
-                      <MDBIcon icon="envelope" />
-                    </MDBBtn>
+                  <MDBBtn size="lg" tag="a" floating social="email">
+                    <MDBIcon icon="envelope" />
+                  </MDBBtn>
                 </MDBContainer>
               </CardBody>
-            </Card>   
+            </Card>
           </Col>
         );
       }
