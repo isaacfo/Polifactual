@@ -17,12 +17,12 @@ class Locals extends Component {
     )
       .then(response => response.json())
       .then(results => {
-        // console.log(Object.values(results[3]));
-        let newResults = Object.values(results);
-        let officesArray = newResults[3];
+        let newResults = Object.values(results); // newResults will be json response array of the users civic representives at each elected level of government.
+        console.log(newResults);
+        let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government and its
         console.log(newResults[3]);
         console.log(newResults[4]);
-        let personInfoArray = newResults[4];
+        let personInfoArray = newResults[4]; // personInfoArray is the names and info for the person who currently has been elected to the seat of the newResults array.
         let masterArray = [];
         console.log(newResults[3][0].divisionId);
         officesArray.forEach(office => {
@@ -35,12 +35,26 @@ class Locals extends Component {
             office.officialIndices.forEach(index => {
               // console.log(personInfoArray[index]);
               let personInfo = personInfoArray[index];
+              let TwitterHandle;
+              if (personInfoArray[index].channels) {
+                // console.log("fart machine");
+                personInfo.channels.forEach(index2 => {
+                  if (index2.type === "Twitter") {
+                    // console.log("hey buddy!");
+                    // console.log(index2.id);
+                    let theirTwitterHandle = index2.id;
+                    TwitterHandle = theirTwitterHandle;
+                    return TwitterHandle;
+                  }
+                });
+              }
               let personOfficeInfo = {
                 officeName: office.name,
                 personName: personInfo.name,
                 address: personInfo.address[0],
                 party: personInfo.party,
-                phoneNumber: personInfo.phones[0]
+                phoneNumber: personInfo.phones[0],
+                twitter: TwitterHandle
               };
               masterArray.push(personOfficeInfo);
             });

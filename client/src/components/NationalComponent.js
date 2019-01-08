@@ -21,8 +21,8 @@ class Nationals extends Component {
         // console.log(Object.values(results[3]));
         let newResults = Object.values(results);
         let officesArray = newResults[3];
-        // console.log(newResults[3]);
-        // console.log(newResults[4]);
+        console.log(newResults[3]);
+        console.log(newResults[4]);
         let personInfoArray = newResults[4];
         let masterArray = [];
         // console.log(newResults[3][0].divisionId);
