@@ -8,6 +8,7 @@ class Login extends Component {
 
     this.state = {
       username: '',
+      address: '',
       password: ''
     };
   }
@@ -33,7 +34,7 @@ class Login extends Component {
         <i class="material-icons lock"></i> Login
     </div>
 
-    <form action="/login" method="POST">
+    <form action="/api/login" method="POST">
         <label>
             <div class="input">
                 <div class="input-addon">
@@ -62,7 +63,7 @@ class Login extends Component {
             <span>Remember Me</span>
         </div>
 
-        <a href="/login"><input type="submit" value="Log In"/></a>
+        <a href="/api/login"><input type="submit" value="Log In"/></a>
     </form>
 
     <div class="forgot-password">

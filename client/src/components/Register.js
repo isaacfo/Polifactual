@@ -13,7 +13,7 @@ class Register extends Component {
         <i class="material-icons lock"></i> Register
     </div>
 
-    <form action="/register" method="POST">
+    <form action="/api/register" method="POST">
         <label>
             <div class="input">
                 <div class="input-addon">
@@ -33,6 +33,42 @@ class Register extends Component {
                 </div>
             </div>
             <input id ="username" placeholder="Username" type="text" name="username" autocomplete="off"/>
+        </label>
+        
+        <br/>
+        <div class="clearfix"></div>
+        
+        <label>
+            <div class="input">
+                <div class="input-addon">
+                <i class="material-icons">face</i>
+                </div>
+            </div>
+            <input id ="streetaddress" placeholder="Street Address" type="text" name="streetaddress" autocomplete="off"/>
+        </label>
+        
+        <br/>
+        <div class="clearfix"></div>
+        
+        <label>
+            <div class="input">
+                <div class="input-addon">
+                <i class="material-icons">face</i>
+                </div>
+            </div>
+            <input id ="currentstate" placeholder="State" type="text" name="currentstate" autocomplete="off"/>
+        </label>
+        
+        <br/>
+        <div class="clearfix"></div>
+        
+        <label>
+            <div class="input">
+                <div class="input-addon">
+                <i class="material-icons">face</i>
+                </div>
+            </div>
+            <input id ="zipcode" placeholder="Zipcode" type="text" name="zipcode" autocomplete="off"/>
         </label>
         
         <br/>
@@ -57,7 +93,7 @@ class Register extends Component {
 
 
 
-        <a href="/register"><input type="submit" value="Register"/> </a>
+        <a href="/api/register"><input type="submit" value="Register"/> </a>
 
 
     </form>   

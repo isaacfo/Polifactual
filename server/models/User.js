@@ -29,6 +29,8 @@ class User {
         const hash = bcrypt.hashSync(password, salt);
         return db.one(`insert into users (name, username, streetaddress, currentstate, zipcode, pwhash) values($1, $2, $3, $4, $5, $6) returning id`, [name, username, streetaddress, currentstate, zipcode, hash])
             .then(data => {
+                // const address = encodeURI(`${streetaddress}${currentstate}${zipcode}`);
+                // const u = new User(data.id, name, username, address);
                 const u = new User(data.id, name, username, streetaddress, currentstate, zipcode);
                 return u;
             })

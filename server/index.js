@@ -121,7 +121,18 @@ app.post('/api/register', (req, res) => {
         })
         .then(newUser => {
             // 3. If that works, redirect to the welcome page
+            // const newAddress = encodeURI(`${newUser.newStreetAddress}${newUser.newState}${newUser.newZipcode}`);
+            // const newSessionUser = {
+            //     id: newUser.id,
+            //     name: newUser.newName,
+            //     username: newUser.newUsername,
+            //     address: newAddress,
+            //     pwhash: newUser.newPassword
+            // }
+            // console.log(newSessionUser);
             req.session.user = newUser;
+            console.log('--------THIS IS THE NEW USER---------');
+            console.log(newUser);
             res.redirect('/api/welcome');
         });
 });
@@ -152,6 +163,8 @@ app.post('/api/login', (req, res) => {
             // const didMatch = bcrypt.compareSync(thePassword, theUser.pwhash);
             if (theUser.passwordDoesMatch(thePassword)) {
                 req.session.user = theUser;
+                console.log('--------THIS IS THE USER--------')
+                console.log(theUser);
                 req.session.save( () =>{
                     res.redirect('/api/welcome');
                 })
