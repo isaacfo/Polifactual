@@ -1,4 +1,5 @@
- import React, { Component } from "react";
+import React, { Component } from "react";
+
 import {  MDBRow, MDBCol, MDBCard, MDBAvatar, MDBCardBody, MDBIcon } from "mdbreact";
 
 class Team extends React.Component {
@@ -10,7 +11,7 @@ class Team extends React.Component {
               Our amazing team
             </h2>
             <p className="grey-text w-responsive mx-auto mb-5">
-              Our team is compromised of four DigitalCrafts coding bootcamp students. 
+              Our team is compromised of four DigitalCrafts coding bootcamp graduates with varying backgrounds and interests. Below is a little bit more about us, check us out!
             </p>
             <MDBRow>
               <MDBCol lg="3" md="6" className="mb-lg-0 mb-5">
@@ -27,13 +28,13 @@ class Team extends React.Component {
                   consectetur, adipisci sed quia non numquam modi tempora eius.
                 </p>
                 <ul className="list-unstyled mb-0">
-                <a href="#!" className="p-2 fa-lg">
+                <a href="mailto:hchang0803@outlook.com" className="p-2 fa-lg">
                     <MDBIcon icon="envelope" className="blue-text" />
                 </a>
-                <a href="#!" className="p-2 fa-lg">
+                <a href="https://www.linkedin.com/in/helen-harris-50205b15/" className="p-2 fa-lg">
                     <MDBIcon icon="linkedin" className="blue-text" />
                   </a>
-                  <a href="#!" className="p-2 fa-lg">
+                  <a href="https://github.com/hharris0803" className="p-2 fa-lg">
                     <MDBIcon icon="github" className="blue-text" />
                   </a>
                 </ul>
@@ -53,13 +54,13 @@ class Team extends React.Component {
                   ipsa accusantium doloremque rem laudantium totam aperiam.
                 </p>
                 <ul className="list-unstyled mb-0">
-                <a href="#!" className="p-2 fa-lg">
+                <a href="mailto:brienmizell@me.com" className="p-2 fa-lg">
                     <MDBIcon icon="envelope" className="blue-text" />
                 </a>
-                <a href="#!" className="p-2 fa-lg">
+                <a href="https://www.linkedin.com/in/brienmizell/" className="p-2 fa-lg">
                     <MDBIcon icon="linkedin" className="blue-text" />
                   </a>
-                  <a href="#!" className="p-2 fa-lg">
+                  <a href="https://github.com/brienmizell" className="p-2 fa-lg">
                     <MDBIcon icon="github" className="blue-text" />
                   </a>
                 </ul>
@@ -79,13 +80,13 @@ class Team extends React.Component {
                   qui officia deserunt mollit anim est fugiat nulla id eu laborum.
                 </p>
                 <ul className="list-unstyled mb-0">
-                <a href="#!" className="p-2 fa-lg">
+                <a href="mailto:sekellickkyle@yahoo.com" className="p-2 fa-lg">
                     <MDBIcon icon="envelope" className="blue-text" />
                 </a>
-                  <a href="#!" className="p-2 fa-lg">
+                  <a href="https://www.linkedin.com/in/kyle-sekellick-b16070135/" className="p-2 fa-lg">
                     <MDBIcon icon="linkedin" className="blue-text" />
                   </a>
-                  <a href="#!" className="p-2 fa-lg">
+                  <a href="https://github.com/Kllicks" className="p-2 fa-lg">
                     <MDBIcon icon="github" className="blue-text" />
                   </a>
                 </ul>
@@ -101,9 +102,7 @@ class Team extends React.Component {
                 <h5 className="font-weight-bold mt-4 mb-3">Isaac Fonseca</h5>
                 <p className="text-uppercase blue-text">Software Engineer</p>
                 <p className="grey-text">
-                  Perspiciatis repellendus ad odit consequuntur, eveniet earum
-                  nisi qui consectetur totam officia voluptates perferendis
-                  voluptatibus aut.
+                  Exercise Physiologist turned Full- Stack Software Engineer, with a passion for competive video gaming and soccer. 
                 </p>
                 <ul className="list-unstyled mb-0">
                 <a href="mailto:isaacfo1010@gmail.com" className="p-2 fa-lg">
