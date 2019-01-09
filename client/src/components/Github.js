@@ -3,16 +3,18 @@ import {  MDBRow, MDBCol, MDBCard, MDBIcon, MDBBtn  } from "mdbreact";
 
 const Github = () => {
   return (
-    <section className="text-center my-5">
-    <h2 className="h1-responsive font-weight-bold my-5">
-      Github
-    </h2>
-    <p className="grey-text w-responsive mx-auto mb-5">
-      Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit
-      est laborum.
-    </p>
+    <div>
+          <section className="text-center my-5">
+          <h2 className="h1-responsive font-weight-bold my-5">
+            Github
+          </h2>
+          <p className="grey-text w-responsive mx-auto mb-5">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            est laborum.
+          </p>
+    
 
     <MDBRow>
       <MDBCol md="12" className="mb-4">
@@ -48,6 +50,8 @@ const Github = () => {
       
     </MDBRow>
   </section>
+  </div>
+
   );
 }
 

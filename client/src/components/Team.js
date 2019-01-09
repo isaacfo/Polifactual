@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import {  MDBRow, MDBCol, MDBCard, MDBAvatar, MDBCardBody, MDBIcon } from "mdbreact";
 
 class Team extends React.Component {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBMask, MDBIcon, MDBView, MDBBtn } from "mdbreact";
 
 const Trello = () => {
@@ -18,29 +19,21 @@ const Trello = () => {
               </MDBView>
               <MDBCardBody cascade className="text-center">
                 <h2 className="font-weight-bold">
-                  <a href="#!">Trello</a>
+                  Trello
                 </h2>
                 <p>
-                  Written by
-                  <a href="#!">
-                    <strong>Our Group</strong>
-                  </a>
-                  , 01/07/2019
+                  Check out our Trello page!
                 </p>
                 <MDBBtn className="btn-fb waves-light">
                   <MDBIcon icon="Trello" className="pr-2" />
-                  Trello
+                  <a href="https://trello.com/b/pipJjSew/capstone-project">Trello</a>
+                 
                 </MDBBtn>
               </MDBCardBody>
             </MDBCard>
             <MDBContainer className="mt-5">
               <p>
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                praesentium voluptatum deleniti atque corrupti quos dolores et
-                quas molestias excepturi sint occaecati cupiditate non
-                provident, similique sunt in culpa nemo enim ipsam voluptatem
-                quia voluptas sit qui officia deserunt mollitia animi, id est
-                laborum et dolorum fuga quidem rerum facilis est distinctio.
+                Our team choose to use Trello as our choice of project planning software. We choose to use Trello to manage our web project for two reasons. It is free and helps keep us organized and focused. 
               </p>
               
             </MDBContainer>
