@@ -48,7 +48,6 @@ class App extends Component {
               isOpen={this.state.isOpen}
               navbar
               >
-
             <NavbarNav left>
               <NavItem active>
               <NavLink to="/">Home</NavLink>
@@ -75,7 +74,6 @@ class App extends Component {
               </Dropdown>
               </NavItem>
               </NavbarNav>
-
               <NavbarNav right>
                 <NavItem>
                   <FormInline waves>
@@ -105,7 +103,6 @@ class App extends Component {
               <Route path= "/State" component={States}/>
               <Route path= "/National" component={Nationals}/>
             </div>
-            
           </Router>
 
         {/* Footer */}
