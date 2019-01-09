@@ -9,7 +9,7 @@ function loginForm(){
             <i class="material-icons lock">lock</i> Login
         </div>
 
-        <form action="/login" method="POST">
+        <form action="/api/login" method="POST">
             <label>
                 <div class="input">
                     <div class="input-addon">
@@ -38,7 +38,7 @@ function loginForm(){
                 <span style="color: #757575">Remember Me</span>
             </div>
 
-            <a href="/login"><input type="submit" value="Log In"></a?>
+            <a href="/api/login"><input type="submit" value="Log In"></a?>
         </form>
 
         <div class="forgot-password">

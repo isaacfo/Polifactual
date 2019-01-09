@@ -53,7 +53,7 @@ function protectRoute(req, res, next) {
     if (isLoggedIn) {
         next();
     } else {
-        res.redirect('/login');
+        res.redirect('/api/login');
     }
 }
 
@@ -72,16 +72,16 @@ app.use((req, res, next) => {
 // ================================================================================================
 
 // Retrieve all users
-app.get('/users', (req, res) => {
-    User.getAll()
-        .then(allUsers => {
-            res.send(page(userList(allUsers)));
-    });
-});
+// app.get('/users', (req, res) => {
+//     User.getAll()
+//         .then(allUsers => {
+//             res.send(page(userList(allUsers)));
+//     });
+// });
 
 // Listen for POST requests 
 // Create a new user
-app.post('/users', (req, res) => {
+app.post('/api/users', (req, res) => {
     console.log(req);
     const newUsername = req.body.name;
     console.log(newUsername);
@@ -94,7 +94,7 @@ app.post('/users', (req, res) => {
 // ================================================================================================
 //                                      USER REGISTRATION
 // ================================================================================================
-app.get('/register', (req, res) => {
+app.get('/api/register', (req, res) => {
     // Send them the signup form
     const theForm = registrationForm();
     const thePage = page(theForm);
@@ -102,39 +102,41 @@ app.get('/register', (req, res) => {
     // res.send(page(registrationForm()));
 });
 
-app.post('/register', (req, res) => {
+app.post('/api/register', (req, res) => {
     // Process the signup form
     // 1. Grab the values out of req.body
     const newName = req.body.name;
     const newUsername = req.body.username;
     const newPassword = req.body.password;
-    const newzipcode = req.body.zipcode;
+    const newStreetAddress = req.body.streetaddress;
+    const newState = req.body.currentstate;
+    const newZipcode = req.body.zipcode;
     
     // 2. Call User.add
-    User.add(newName, newUsername, newPassword)
+    User.add(newName, newUsername, newStreetAddress, newState, newZipcode, newPassword)
         .catch((err) => {
             console.log(err);
             console.log('that was the error');
-            res.redirect('/login');
+            res.redirect('/api/login');
         })
         .then(newUser => {
             // 3. If that works, redirect to the welcome page
             req.session.user = newUser;
-            res.redirect('/welcome');
+            res.redirect('/api/welcome');
         });
 });
 
 // ================================================================================================
 //                                              USER LOGIN
 // ================================================================================================
-app.get('/login', (req, res) => {
+app.get('/api/login', (req, res) => {
     // Send them the login form 
     const theForm = loginForm();
     const thePage = page(theForm);
     res.send(thePage);
 });
 
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
     // Process the login form 
     // 1. Grab values from form 
     const theUsername = req.body.username;
@@ -144,17 +146,17 @@ app.post('/login', (req, res) => {
     User.getByUsername(theUsername)
         .catch(err => {
             console.log(err);
-            res.redirect('/login');
+            res.redirect('/api/login');
         })
         .then(theUser => {
             // const didMatch = bcrypt.compareSync(thePassword, theUser.pwhash);
             if (theUser.passwordDoesMatch(thePassword)) {
                 req.session.user = theUser;
                 req.session.save( () =>{
-                    res.redirect('/welcome');
+                    res.redirect('/api/welcome');
                 })
             } else {
-                res.redirect('/login');
+                res.redirect('/api/login');
             }
         })
 });
@@ -162,18 +164,18 @@ app.post('/login', (req, res) => {
 // ================================================================================================
 //                   REDIRECT FROM LOGIN OR REGISTER PAGE TO MAIN WELCOME PAGE         
 // ================================================================================================
-app.get('/welcome', (req, res) => {
+app.get('/api/welcome', (req, res) => {
     res.send(widget2());
 })
 
 // ================================================================================================
 //                                              USER LOGOUT
 // ================================================================================================
-app.post('/logout', (req, res) => {
+app.post('/api/logout', (req, res) => {
     // End session and redirect them to the home page
     req.session.destroy(() => {
         req.session = null;
-        res.redirect('/login');
+        res.redirect('/api/login');
     });
 
 });
@@ -181,55 +183,55 @@ app.post('/logout', (req, res) => {
 // ================================================================================================
 //                                      RETRIEVE ONE USER'S INFO                     
 // ================================================================================================
-app.get('/users/:id([0-9]+)', (req, res) => {
-    User.getById(req.params.id)
-        .catch(err => {
-            res.send({
-                message: `no soup for you`
-            });
-        })
-        .then(theUser => {
-            res.send(theUser);
-        })
-});
+// app.get('/api/users/:id([0-9]+)', (req, res) => {
+//     User.getById(req.params.id)
+//         .catch(err => {
+//             res.send({
+//                 message: `no soup for you`
+//             });
+//         })
+//         .then(theUser => {
+//             res.send(theUser);
+//         })
+// });
 
 // ================================================================================================
 //                          GET THE FORM FOR EDITING ONE USER'S INFO             
 // ================================================================================================
-app.get('/users/:id([0-9]+)/edit', (req, res) => {
-    User.getById(req.params.id)
-        .catch(err => {
-            res.send({
-                message: `no soup for you`
-            });
-        })
-        .then(theUser => {
-            res.send(page(userForm(theUser)));
-        })
-});
+// app.get('/users/:id([0-9]+)/edit', (req, res) => {
+//     User.getById(req.params.id)
+//         .catch(err => {
+//             res.send({
+//                 message: `no soup for you`
+//             });
+//         })
+//         .then(theUser => {
+//             res.send(page(userForm(theUser)));
+//         })
+// });
 
 // ================================================================================================
 //                          PROCESS THE FORM FOR EDITING ONE USER'S INFO       
 // ================================================================================================
-app.post('/users/:id([0-9]+)/edit', (req, res) => {
-    const id = req.params.id;
-    const newName = req.body.name;
-    // Get the user by their id
-    User.getById(id)
-        .then(theUser => {
-            // call that user's updateName method
-            theUser.updateName(newName)
-                .then(didUpdate => {
-                    if (didUpdate) {
-                        // res.send('yeah you did');
-                        // res.redirect(`/users/${id}/edit`);
-                        res.redirect(`/users/`);
-                    } else {
-                        res.send('💩');
-                    }
-                });            
-        });
-});
+// app.post('/users/:id([0-9]+)/edit', (req, res) => {
+//     const id = req.params.id;
+//     const newName = req.body.name;
+//     // Get the user by their id
+//     User.getById(id)
+//         .then(theUser => {
+//             // call that user's updateName method
+//             theUser.updateName(newName)
+//                 .then(didUpdate => {
+//                     if (didUpdate) {
+//                         // res.send('yeah you did');
+//                         // res.redirect(`/users/${id}/edit`);
+//                         res.redirect(`/users/`);
+//                     } else {
+//                         res.send('💩');
+//                     }
+//                 });            
+//         });
+// });
 
 // ================================================================================================
 //                          ALLOWS VIEWING ON LOCAL HOST 3005
