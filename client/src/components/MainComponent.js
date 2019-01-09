@@ -36,10 +36,7 @@ class Main extends React.Component {
                 </h1>
                 <hr className="hr-light" />
                 <h6 className="mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Rem repellendus quasi fuga nesciunt dolorum nulla magnam
-                  veniam sapiente, fugiat! Commodi sequi non animi ea dolor
-                  molestiae, quisquam iste, maiores. Nulla.
+                  Welcome! Polifactual is designed to bring you all your local, state, and national legislative representative information. It does so by using your address which includes street, state, and zipcode.
                 </h6>
                 <MDBBtn outline color="white">
                   Learn More

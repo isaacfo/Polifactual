@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+ import React, { Component } from "react";
 import {  MDBRow, MDBCol, MDBCard, MDBAvatar, MDBCardBody, MDBIcon } from "mdbreact";
 
 class Team extends React.Component {
@@ -10,9 +10,7 @@ class Team extends React.Component {
               Our amazing team
             </h2>
             <p className="grey-text w-responsive mx-auto mb-5">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
-              error amet numquam iure provident voluptate esse quasi, veritatis
-              totam voluptas nostrum quisquam eum porro a pariatur veniam.
+              Our team is compromised of four DigitalCrafts coding bootcamp students. 
             </p>
             <MDBRow>
               <MDBCol lg="3" md="6" className="mb-lg-0 mb-5">
@@ -108,13 +106,13 @@ class Team extends React.Component {
                   voluptatibus aut.
                 </p>
                 <ul className="list-unstyled mb-0">
-                <a href="#!" className="p-2 fa-lg">
+                <a href="mailto:isaacfo1010@gmail.com" className="p-2 fa-lg">
                     <MDBIcon icon="envelope" className="blue-text" />
                 </a>
-                  <a href="#!" className="p-2 fa-lg">
+                  <a href="https://www.linkedin.com/in/isaac-fonseca10/" className="p-2 fa-lg">
                     <MDBIcon icon="linkedin" className="blue-text" />
                   </a>
-                  <a href="#!" className="p-2 fa-lg">
+                  <a href="https://github.com/isaacfo" className="p-2 fa-lg">
                     <MDBIcon icon="github" className="blue-text" />
                   </a>
                 </ul>
