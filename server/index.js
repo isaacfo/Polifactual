@@ -53,7 +53,7 @@ function protectRoute(req, res, next) {
     if (isLoggedIn) {
         next();
     } else {
-        res.redirect('/login');
+        res.redirect('/api/login');
     }
 }
 
@@ -94,13 +94,13 @@ app.post('/api/users', (req, res) => {
 // ================================================================================================
 //                                      USER REGISTRATION
 // ================================================================================================
-// app.get('/register', (req, res) => {
-//     // Send them the signup form
-//     const theForm = registrationForm();
-//     const thePage = page(theForm);
-//     res.send(thePage);
-//     // res.send(page(registrationForm()));
-// });
+app.get('/api/register', (req, res) => {
+    // Send them the signup form
+    const theForm = registrationForm();
+    const thePage = page(theForm);
+    res.send(thePage);
+    // res.send(page(registrationForm()));
+});
 
 app.post('/api/register', (req, res) => {
     // Process the signup form
@@ -117,24 +117,24 @@ app.post('/api/register', (req, res) => {
         .catch((err) => {
             console.log(err);
             console.log('that was the error');
-            res.redirect('/login');
+            res.redirect('/api/login');
         })
         .then(newUser => {
             // 3. If that works, redirect to the welcome page
             req.session.user = newUser;
-            res.redirect('/local');
+            res.redirect('/api/welcome');
         });
 });
 
 // ================================================================================================
 //                                              USER LOGIN
 // ================================================================================================
-// app.get('/api/login', (req, res) => {
-//     // Send them the login form 
-//     const theForm = loginForm();
-//     const thePage = page(theForm);
-//     res.send(thePage);
-// });
+app.get('/api/login', (req, res) => {
+    // Send them the login form 
+    const theForm = loginForm();
+    const thePage = page(theForm);
+    res.send(thePage);
+});
 
 app.post('/api/login', (req, res) => {
     // Process the login form 
@@ -153,10 +153,10 @@ app.post('/api/login', (req, res) => {
             if (theUser.passwordDoesMatch(thePassword)) {
                 req.session.user = theUser;
                 req.session.save( () =>{
-                    res.redirect('/local');
+                    res.redirect('/api/welcome');
                 })
             } else {
-                res.redirect('/login');
+                res.redirect('/api/login');
             }
         })
 });
@@ -164,9 +164,9 @@ app.post('/api/login', (req, res) => {
 // ================================================================================================
 //                   REDIRECT FROM LOGIN OR REGISTER PAGE TO MAIN WELCOME PAGE         
 // ================================================================================================
-// app.get('/welcome', (req, res) => {
-//     res.send(widget2());
-// })
+app.get('/api/welcome', (req, res) => {
+    res.send(widget2());
+})
 
 // ================================================================================================
 //                                              USER LOGOUT
@@ -175,7 +175,7 @@ app.post('/api/logout', (req, res) => {
     // End session and redirect them to the home page
     req.session.destroy(() => {
         req.session = null;
-        res.redirect('/login');
+        res.redirect('/api/login');
     });
 
 });

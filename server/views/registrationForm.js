@@ -8,7 +8,7 @@ function registrationForm() {
         <i class="material-icons lock">lock</i> Register
     </div>
 
-    <form action="/register" method="POST">
+    <form action="/api/register" method="POST">
         <label>
             <div class="input">
                 <div class="input-addon">
@@ -44,8 +44,8 @@ function registrationForm() {
                 <div class="input-addon">
                 <i class="material-icons">home</i>
             </div>
-            <input id="streetaddress" placeholder="Street" type="text" name="street" autocomplete="off">
-            <input id="currentstate" placeholder="State" type="text" name="state" autocomplete="off">
+            <input id="streetaddress" placeholder="Street" type="text" name="streetaddress" autocomplete="off">
+            <input id="currentstate" placeholder="State" type="text" name="currentstate" autocomplete="off">
             <input id="zipcode" placeholder="Zipcode" type="text" name="zipcode" autocomplete="off">
         </label>
         
@@ -59,7 +59,7 @@ function registrationForm() {
 
 
 
-        <a href="/register"><input type="submit" value=Register>
+        <a href="/api/register"><input type="submit" value=Register>
 
 
     </form>   
