@@ -21,7 +21,7 @@ function logoutButton() {
     return `
     <div class=logout>
 
-        <form action="/logout" method="POST">
+        <form action="/api/logout" method="POST">
         <input type="submit" value="Logout">
         </form>
     </div>
