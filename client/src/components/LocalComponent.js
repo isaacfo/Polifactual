@@ -37,18 +37,23 @@ class Locals extends Component {
         let masterArray = [];
         // console.log(newResults[3][newResults[3].length - 1].divisionId);
 
-        for (let i = 2; i < officesArray.length; i++) {
+        for (let i = 3; i < officesArray.length; i++) {
           let office = officesArray[i];
           office.officialIndices.forEach(index => {
             // console.log(personInfoArray[index]);
             let personInfo = personInfoArray[index];
             let TwitterHandle;
             // console.log(personInfo.address);
+            let personEmail = personInfo.emails || null; // if an elected official has an email address add that value to personEmail.
+            let personPhoto = personInfo.photoUrl || null; //if an elected official has a photo url add that value to personPhoto
+            let personUrl = personInfo.urls || null; // if an elected official has a website (personal or for the department) add that value to personUrl
+
+            console.log(personUrl);
             if (personInfo.address) {
               if (personInfoArray[index].channels) {
                 // console.log("fart machine");
                 personInfo.channels.forEach(index2 => {
-                  // console.log(personInfo.address[0]);
+                  let TwitterHandle = personInfo.emails || null;
                   if (index2.type === "Twitter") {
                     // console.log("hey buddy!");
                     // console.log(index2.id);
@@ -64,7 +69,10 @@ class Locals extends Component {
                 address: personInfo.address[0] || undefined,
                 party: personInfo.party,
                 phoneNumber: personInfo.phones[0],
-                twitter: TwitterHandle
+                twitter: TwitterHandle,
+                email: personEmail,
+                photo: personPhoto,
+                url: personUrl
               };
               masterArray.push(personOfficeInfo);
             }
@@ -88,7 +96,7 @@ class Locals extends Component {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       return (
         <Col>
-          <Card style={{ width: "40rem" }}>
+          <Card style={{ width: "20rem" }}>
             {/* <CardImage
               className="img-fluid"
               src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
@@ -96,6 +104,11 @@ class Locals extends Component {
             <CardBody className="h-100 w-100">
               <ul key={index}>
                 <CardTitle>
+                  {item.photo ? (
+                    <div>
+                      <img src={item.photo} alt="" />
+                    </div>
+                  ) : null}
                   {item.personName ? <div>{item.personName}</div> : null}
                   <br />
                   {item.officeName ? <div>{item.officeName}</div> : null}
@@ -109,6 +122,10 @@ class Locals extends Component {
                   {item.address.zip ? <div>{item.address.zip}</div> : null}
                   {item.party ? <div>{item.party}</div> : null}
                   {item.phoneNumber ? <div>{item.phoneNumber}</div> : null}
+                  {item.url ? <a href={item.url}>{item.url}</a> : null}
+                  {item.email ? (
+                    <a href={"mailto:" + item.email}>{item.email}</a>
+                  ) : null}
                   {item.twitter ? (
                     <div>
                       <Timeline
