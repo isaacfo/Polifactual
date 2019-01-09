@@ -108,7 +108,7 @@ class Locals extends Component {
                 <CardTitle>
                   {item.photo ? (
                     <div>
-                      <img style={{width: '15rem', height: '15rem'}} src={item.photo} alt="" />
+                      <img style={{width: '13rem', height: '15rem'}} src={item.photo} alt="" />
                     </div>
                   ) : null}
                   {item.personName ? <div>{item.personName}</div> : null}
