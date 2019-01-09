@@ -1,9 +1,5 @@
 -- ========================================================
-<<<<<<< HEAD
---              USERS: NAME, USERNAME, PWHASH, ZIPCODE
-=======
 --              USERS: NAME, USERNAME, STREETADDRESS, CURRENTSTATE, ZIPCODE, PWHASH
->>>>>>> Kllicks/routing01
 -- ========================================================
 -- create table name(
 --     id serial primary key, 
@@ -26,10 +22,3 @@ create table users(
 
 );
 
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> Kllicks/routing01
