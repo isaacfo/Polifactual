@@ -117,7 +117,7 @@ app.post('/api/register', (req, res) => {
         .catch((err) => {
             console.log(err);
             console.log('that was the error');
-            res.redirect('/api/login');
+            res.redirect('/login');
         })
         .then(newUser => {
             // 3. If that works, redirect to the welcome page
@@ -129,12 +129,12 @@ app.post('/api/register', (req, res) => {
 // ================================================================================================
 //                                              USER LOGIN
 // ================================================================================================
-app.get('/api/login', (req, res) => {
-    // Send them the login form 
-    const theForm = loginForm();
-    const thePage = page(theForm);
-    res.send(thePage);
-});
+// app.get('/api/login', (req, res) => {
+//     // Send them the login form 
+//     const theForm = loginForm();
+//     const thePage = page(theForm);
+//     res.send(thePage);
+// });
 
 app.post('/api/login', (req, res) => {
     // Process the login form 
@@ -156,7 +156,7 @@ app.post('/api/login', (req, res) => {
                     res.redirect('/local');
                 })
             } else {
-                res.redirect('/api/login');
+                res.redirect('/login');
             }
         })
 });
