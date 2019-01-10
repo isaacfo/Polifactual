@@ -52,7 +52,16 @@ class Login extends Component {
 			.post("/api/login", this.state)
 			.then(response => {
 				// Need a response including the address from userObj
+				if (response.data.status !== "Good") {
+					alert("Try Again");
+				} else {
+					this.props.history.push("/local")
+				}
+				console.log(response.data)
 			})
+			.catch(err => {
+				console.log(err);
+			});
 	}
 
 	render() {

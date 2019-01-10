@@ -73,8 +73,17 @@ class Register extends Component {
 		axios
 			.post("/api/register", this.state)
 			.then(response => {
-				// Need a response including the address from userObj
-			})
+                // Need a response including the address from userObj
+                if (response.data.status !== 'Good') {
+                    alert("Try again!")
+                }
+                else {
+                    this.props.history.push('/local')
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
 	}
 
     render() {
