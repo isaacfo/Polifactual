@@ -81,26 +81,26 @@ app.use((req, res, next) => {
 
 // Listen for POST requests 
 // Create a new user
-app.post('/api/users', (req, res) => {
-    console.log(req);
-    const newUsername = req.body.name;
-    console.log(newUsername);
-    User.add(newUsername)
-        .then(theUser => {
-            res.send(theUser);
-        })
-});
+// app.post('/api/users', (req, res) => {
+//     console.log(req);
+//     const newUsername = req.body.name;
+//     console.log(newUsername);
+//     User.add(newUsername)
+//         .then(theUser => {
+//             res.send(theUser);
+//         })
+// });
 
 // ================================================================================================
 //                                      USER REGISTRATION
 // ================================================================================================
-app.get('/api/register', (req, res) => {
-    // Send them the signup form
-    const theForm = registrationForm();
-    const thePage = page(theForm);
-    res.send(thePage);
-    // res.send(page(registrationForm()));
-});
+// app.get('/api/register', (req, res) => {
+//     // Send them the signup form
+//     const theForm = registrationForm();
+//     const thePage = page(theForm);
+//     res.send(thePage);
+//     // res.send(page(registrationForm()));
+// });
 
 app.post('/api/register', (req, res) => {
     // Process the signup form
@@ -120,16 +120,6 @@ app.post('/api/register', (req, res) => {
             res.redirect('/api/login');
         })
         .then(newUser => {
-            // 3. If that works, redirect to the welcome page
-            // const newAddress = encodeURI(`${newUser.newStreetAddress}${newUser.newState}${newUser.newZipcode}`);
-            // const newSessionUser = {
-            //     id: newUser.id,
-            //     name: newUser.newName,
-            //     username: newUser.newUsername,
-            //     address: newAddress,
-            //     pwhash: newUser.newPassword
-            // }
-            // console.log(newSessionUser);
             req.session.user = newUser;
             console.log('--------THIS IS THE NEW USER---------');
             console.log(newUser);
@@ -140,12 +130,12 @@ app.post('/api/register', (req, res) => {
 // ================================================================================================
 //                                              USER LOGIN
 // ================================================================================================
-app.get('/api/login', (req, res) => {
-    // Send them the login form 
-    const theForm = loginForm();
-    const thePage = page(theForm);
-    res.send(thePage);
-});
+// app.get('/api/login', (req, res) => {
+//     // Send them the login form 
+//     const theForm = loginForm();
+//     const thePage = page(theForm);
+//     res.send(thePage);
+// });
 
 app.post('/api/login', (req, res) => {
     // Process the login form 
@@ -157,7 +147,7 @@ app.post('/api/login', (req, res) => {
     User.getByUsername(theUsername)
         .catch(err => {
             console.log(err);
-            res.redirect('/api/login');
+            // res.redirect('/api/login');
         })
         .then(theUser => {
             // const didMatch = bcrypt.compareSync(thePassword, theUser.pwhash);
@@ -166,10 +156,11 @@ app.post('/api/login', (req, res) => {
                 console.log('--------THIS IS THE USER--------')
                 console.log(theUser);
                 req.session.save( () =>{
-                    res.redirect('/api/welcome');
+                    res.json({ status: "Good" });
                 })
             } else {
-                res.redirect('/api/login');
+                console.log("something went wrong");
+                res.json({ status: "NOT GOOD" });
             }
         })
 });
@@ -177,9 +168,9 @@ app.post('/api/login', (req, res) => {
 // ================================================================================================
 //                   REDIRECT FROM LOGIN OR REGISTER PAGE TO MAIN WELCOME PAGE         
 // ================================================================================================
-app.get('/api/welcome', (req, res) => {
-    res.send(widget2());
-})
+// app.get('/api/welcome', (req, res) => {
+//     res.send(widget2());
+// })
 
 // ================================================================================================
 //                                              USER LOGOUT
@@ -188,7 +179,7 @@ app.post('/api/logout', (req, res) => {
     // End session and redirect them to the home page
     req.session.destroy(() => {
         req.session = null;
-        res.redirect('/api/login');
+        res.json({ status: "Goodbye"});
     });
 
 });

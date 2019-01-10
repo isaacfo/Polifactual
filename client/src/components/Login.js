@@ -1,91 +1,131 @@
 import React, { Component } from "react";
-
+import axios from "axios";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "../styles/Login.css"
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+	super(props);
 
-    this.state = {
-      username: '',
-      address: '',
-      password: ''
-    };
-  }
+	this.state = {
+		id: '',
+		name: '',
+		username: '',
+		address: '',
+		password: ''
+	};
+	}
 
-  validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
-  }
+	// validateForm() {
+	// return this.state.email.length > 0 && this.state.password.length > 0;
+	// }
 
-  handleChange = event => {
-    this.setState({
-      [event.target.id]: event.target.value
-    });
-  }
+	// handleChange = event => {
+	// this.setState({
+	// 	[event.target.id]: event.target.value,
+	// 	// id: event.target.id
+	// });
+	// }
 
-  handleSubmit = event => {
-    event.preventDefault();
-  }
+	_handleEmail = event => {
+		const value = event.target.value;
 
-  render() {
-    return (
- <div class="container-login">
-    <div class="title">
-        <i class="material-icons lock"></i> Login
-    </div>
+		this.setState({
+			email: value
+		});
+	}
 
-    <form action="/api/login" method="POST">
-        <label>
-            <div class="input">
-                <div class="input-addon">
-                    <i class="material-icons">face</i>
-                </div>
-                <input id="username" placeholder="Username" type="text" name="username" autocomplete="off"/>
-            </div>
-        </label>
+	_handlePassword = event => {
+		const value = event.target.value;
 
-        <br/>
-        <div class="clearfix"></div>
+		this.setState({
+			password: value
+		})
+	}
 
-        <label>
-            <div class="input">
-                <div class="input-addon">
-                    <i class="material-icons">vpn_key</i>
-                </div>
-                <input id="password" placeholder="Password" type="password" name="password" autocomplete="off"/>
-            </div>
-        </label>
-        <br/>
-        <div class="clearfix"></div>
+	_handleSubmit = event => {
+		event.preventDefault();
 
-        <div class="remember-me">
-            <input type="checkbox"/>
-            <span>Remember Me</span>
-        </div>
+		axios
+			.post("/api/login", this.state)
+			.then(response => {
+				
+			})
+	}
 
-        <a href="/api/login"><input type="submit" value="Log In"/></a>
-    </form>
+	render() {
+	return (
+		<div class="container-login">
+			<div class="title">
+				<i class="material-icons lock"></i> Login
+			</div>
 
-    <div class="forgot-password">
-        <a href="#">Forgot your password?</a>
-    </div>
-    <div class="privacy">
-        <a href="#">Privacy Policy</a>
-    </div>
+			<form className="signup-form" onSubmit={this._handleSubmit}>
+				<label>
+					<div class="input">
+						<div class="input-addon">
+							<i class="material-icons">face</i>
+						</div>
+						<input 
+							id="username" 
+							placeholder="Username" 
+							type="text" 
+							name="username" 
+							autocomplete="off" 
+							onChange={this._handleEmail}
+							value={this.state.email}/>
+					</div>
+				</label>
 
-    <div class="register">
-        <span>Don't have an account yet?</span>
-        <a href="/register"><button id="register-link">Register here</button></a>
-    </div>
-    
-</div>
-    )
+				<br/>
+				<div class="clearfix"></div>
+
+				<label>
+					<div class="input">
+						<div class="input-addon">
+							<i class="material-icons">vpn_key</i>
+						</div>
+						<input 
+							id="password" 
+							placeholder="Password" 
+							type="password" 
+							name="password" 
+							autocomplete="off"
+							onChange={this._handlePassword}
+							value={this.state.password}/>
+					</div>
+				</label>
+				<br/>
+				<div class="clearfix"></div>
+
+				<div class="remember-me">
+					<input type="checkbox"/>
+					<span>Remember Me</span>
+				</div>
+				<input type="submit" value="Log In"/>
+			</form>
+
+			<div class="forgot-password">
+				<a href="#">Forgot your password?</a>
+			</div>
+			<div class="privacy">
+				<a href="#">Privacy Policy</a>
+			</div>
+
+			<div class="register">
+				<span>Don't have an account yet?</span>
+
+				<Link to="/register">Register here!</Link>
+			</div>
+			
+		</div>
+	)
 
 }
 
 
 };
 
-        
+		
 
 export default Login;
