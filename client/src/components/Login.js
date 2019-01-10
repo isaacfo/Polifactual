@@ -55,9 +55,27 @@ class Login extends Component {
 				if (response.data.status !== "Good") {
 					alert("Try Again");
 				} else {
+					console.log(response.data)
+					const user = response.data.user;
+					console.log(user);
+					
+					// Save data to sessionStorage
+					// sessionStorage.setItem('key', 'value');
+					sessionStorage.setItem('streetaddress', user.streetaddress);
+					sessionStorage.setItem('currentstate', user.currentstate);
+					sessionStorage.setItem('zipcode', user.zipcode);
+
+					// Get saved data from sessionStorage
+					let streetaddress = sessionStorage.getItem('streetaddress');
+					console.log(streetaddress);
+					let currentstate = sessionStorage.getItem('currentstate');
+					console.log(currentstate);
+					let zipcode = sessionStorage.getItem('zipcode');
+					console.log(zipcode);
+
 					this.props.history.push("/local")
 				}
-				console.log(response.data)
+				
 			})
 			.catch(err => {
 				console.log(err);
