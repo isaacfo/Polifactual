@@ -114,7 +114,7 @@ class Nationals extends Component {
                       <img style={{width: '13rem', height: '15rem'}} src={item.photo} alt="" />
                     </div>
                   ) : null}
-                  {item.personName ? <div>{item.personName}</div> : null}
+                  {item.personName ? <div><a href={item.url}>{item.personName}</a></div> : null}
                   <br />
                   {item.officeName ? <div>{item.officeName}</div> : null}
                   <br />
@@ -127,10 +127,7 @@ class Nationals extends Component {
                   {item.address.zip ? <div>{item.address.zip}</div> : null}
                   {item.party ? <div>{item.party}</div> : null}
                   {item.phoneNumber ? <div>{item.phoneNumber}</div> : null}
-                  {item.url ? <a href={item.url}>{item.url}</a> : null}
-                  {item.email ? (
-                    <a href={"mailto:" + item.email}>{item.email}</a>
-                  ) : null}
+                  {/* {item.url ? <a href={item.url}>{item.url}</a> : null} */}
                   {item.twitter ? (
                     <div>
                       <Timeline
@@ -151,9 +148,11 @@ class Nationals extends Component {
                 </CardText>
               </li>
               <MDBContainer>
-                <MDBBtn size="lg" tag="a" floating social="email">
-                  <MDBIcon icon="envelope" />
-                </MDBBtn>
+              {item.email ? (
+                    <MDBBtn size="lg" tag="a" floating social="email" href={"mailto:" + item.email}>
+                    <MDBIcon icon="envelope" />
+                  </MDBBtn>
+                  ) : null}
               </MDBContainer>
             </CardBody>
           </Card>
