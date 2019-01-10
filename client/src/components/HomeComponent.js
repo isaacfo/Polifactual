@@ -20,8 +20,8 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        {/* First Section */}
-          {/* <MDBView>
+        {/*First Section */}
+           <MDBView>
             <MDBMask className="d-flex justify-content-center align-items-center gradient">
            <MDBContainer>
              <MDBRow>
@@ -71,7 +71,7 @@ class Home extends React.Component {
              </MDBRow>
            </MDBContainer>
          </MDBMask>
-       </MDBView> */}
+       </MDBView>
 
  {/* Second Section */}
  <MDBContainer>
