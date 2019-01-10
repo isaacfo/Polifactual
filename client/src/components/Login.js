@@ -5,15 +5,17 @@ import "../styles/Login.css"
 
 class Login extends Component {
 	constructor(props) {
-	super(props);
+		super(props);
 
-	this.state = {
-		id: '',
-		name: '',
-		username: '',
-		address: '',
-		password: ''
-	};
+		this.state = {
+			id: '',
+			name: '',
+			username: '',
+			streetaddress: '',
+			currentstate: '',
+			zipcode: '',
+			password: ''
+		};
 	}
 
 	// validateForm() {
@@ -27,11 +29,11 @@ class Login extends Component {
 	// });
 	// }
 
-	_handleEmail = event => {
+	_handleUsername = event => {
 		const value = event.target.value;
 
 		this.setState({
-			email: value
+			username: value
 		});
 	}
 
@@ -49,7 +51,7 @@ class Login extends Component {
 		axios
 			.post("/api/login", this.state)
 			.then(response => {
-				
+				// Need a response including the address from userObj
 			})
 	}
 
@@ -72,8 +74,9 @@ class Login extends Component {
 							type="text" 
 							name="username" 
 							autocomplete="off" 
-							onChange={this._handleEmail}
-							value={this.state.email}/>
+							onChange={this._handleUsername}
+							value={this.state.username}
+						/>
 					</div>
 				</label>
 
@@ -92,7 +95,8 @@ class Login extends Component {
 							name="password" 
 							autocomplete="off"
 							onChange={this._handlePassword}
-							value={this.state.password}/>
+							value={this.state.password}
+						/>
 					</div>
 				</label>
 				<br/>

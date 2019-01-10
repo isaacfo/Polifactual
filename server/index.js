@@ -117,13 +117,13 @@ app.post('/api/register', (req, res) => {
         .catch((err) => {
             console.log(err);
             console.log('that was the error');
-            res.redirect('/api/login');
+            res.json({ status: "NOT GOOD" });
         })
         .then(newUser => {
             req.session.user = newUser;
             console.log('--------THIS IS THE NEW USER---------');
             console.log(newUser);
-            res.redirect('/api/welcome');
+            res.json({ status: "Good" });
         });
 });
 
