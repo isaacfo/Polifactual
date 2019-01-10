@@ -75,7 +75,7 @@ class Register extends Component {
 			.then(response => {
                 // Need a response including the address from userObj
                 if (response.data.status !== 'Good') {
-                    alert("Try again!")
+                    console.log(response.data)
                 }
                 else {
                     this.props.history.push('/local')
