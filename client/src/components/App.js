@@ -34,7 +34,7 @@ class App extends Component {
     return (
       <div className="App bg">
       <Router>
-        <div>
+        <>
             <Navbar color="transparent" dark expand="md">
               <NavbarBrand>
               <strong className="white-text">Polifactual</strong>
@@ -107,7 +107,7 @@ class App extends Component {
               <Route path="/Local" component={Locals}/>
               <Route path= "/State" component={States}/>
               <Route path= "/National" component={Nationals}/>
-            </div>
+            </>
           </Router>
 
         {/* Footer */}

@@ -114,22 +114,22 @@ class Nationals extends Component {
                       <img style={{width: '13rem', height: '15rem'}} src={item.photo} alt="" />
                     </div>
                   ) : null}
-                  {item.personName ? <div><a href={item.url}>{item.personName}</a></div> : null}
+                  {item.personName ? <><a href={item.url}>{item.personName}</a></> : null}
                   <br />
-                  {item.officeName ? <div>{item.officeName}</div> : null}
+                  {item.officeName ? <>{item.officeName}</> : null}
                   <br />
                 </CardTitle>
                 <CardText>
-                  {item.address.line1 ? <div>{item.address.line1}</div> : null}
-                  {item.address.line2 ? <div>{item.address.line2}</div> : null}
-                  {item.address.city ? <div>{item.address.city}</div> : null}
-                  {item.address.state ? <div>{item.address.state}</div> : null}
-                  {item.address.zip ? <div>{item.address.zip}</div> : null}
-                  {item.party ? <div>{item.party}</div> : null}
-                  {item.phoneNumber ? <div>{item.phoneNumber}</div> : null}
+                  {item.address.line1 ? <>{item.address.line1}</> : null}
+                  {item.address.line2 ? <>{item.address.line2}</> : null}
+                  {item.address.city ? <>{item.address.city}</> : null}
+                  {item.address.state ? <>{item.address.state}</> : null}
+                  {item.address.zip ? <>{item.address.zip}</> : null}
+                  {item.party ? <>{item.party}</> : null}
+                  {item.phoneNumber ? <>{item.phoneNumber}</> : null}
                   {/* {item.url ? <a href={item.url}>{item.url}</a> : null} */}
                   {item.twitter ? (
-                    <div>
+                    <>
                       <Timeline
                         dataSource={{
                           sourceType: "profile",
@@ -142,9 +142,8 @@ class Nationals extends Component {
                         }}
                         onLoad={() => console.log("Timeline is loaded!")}
                       />
-                    </div>
+                    </>
                   ) : null}
-                  <div />
                 </CardText>
               </li>
               <MDBContainer>
