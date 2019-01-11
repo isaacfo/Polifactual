@@ -75,7 +75,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* [Isaac Fonseca](www.isaacfonseca.com)
+* [Isaac Fonseca](www.isaacfonseca.com) -hkjb
 * [Helen Harris]()
 * [Kyle Sekellick]()
 * [Brein Mizell]()
