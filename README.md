@@ -75,10 +75,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-[Isaac Fonseca](www.isaacfonseca.com)
-[Helen Harris]()
-[Kyle Sekellick]()
-[Brein Mizell]()
+* [Isaac Fonseca](www.isaacfonseca.com)
+* [Helen Harris]()
+* [Kyle Sekellick]()
+* [Brein Mizell]()
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
