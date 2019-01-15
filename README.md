@@ -75,7 +75,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* [Isaac Fonseca](www.isaacfonseca.com)
+* [Isaac](www.isaacfonseca.com)
 * [Helen Harris]()
 * [Kyle Sekellick]()
 * [Brein Mizell]()
@@ -85,6 +85,14 @@ See also the list of [contributors](https://github.com/your/project/contributors
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+
+## Future Edits
+
+Adjust footer links/content
+
+Comment portions of code that need more clarication
+
 
 ## Acknowledgments
 
