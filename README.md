@@ -46,7 +46,7 @@ Adjust footer links/content
 Comment portions of code that need more clarification and clean up files
   - Several componenets found in the code are class components, when in fact they could be fucntional components.
   - Several imports in files are not used 
-  - Async and Await features to be implemented, such as replacing .then code snippets to Async and Await 
+  - Replacing .then code snippets to Async and Await 
 
 ## Acknowledgments
 
