@@ -15,7 +15,7 @@ By taking a users address and zipcode, our application can pull in information f
 * [PostrgreSQL](https://www.postgresql.org/) - Realational database used to store our user information
 * [AWS](https://aws.amazon.com/) -Amazon web services used to deploy application 
 
-
+## Images
 
 
 ## Authors
